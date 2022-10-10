@@ -4,7 +4,14 @@
 <head>
     @include('system.meta')
 
+    <!-- Fonts -->
     <link rel="stylesheet" href="https://use.typekit.net/ins2wgm.css">
+
+    <!-- Scripts -->
+    @vite(['resources/css/docs.css', 'resources/js/app.js'])
+
+    <!-- Styles -->
+    @livewireStyles
 
     @php
         $routesThatAreAlwaysLightMode = collect([
@@ -18,15 +25,6 @@
     </script>
 
     @include('partials.theme')
-
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <!-- Styles -->
-    @livewireStyles
 </head>
 <body
     x-data="{

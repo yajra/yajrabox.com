@@ -12,9 +12,6 @@ module.exports = {
     darkMode: 'class',
     theme: {
         extend: {
-            fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
-            },
             fontSize: {
                 '6.5xl': ['4rem', { lineHeight: '1' }],
             },
