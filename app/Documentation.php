@@ -37,6 +37,17 @@ class Documentation
     }
 
     /**
+     * Get the publicly available versions of the documentation
+     *
+     * @param  string  $package
+     * @return string
+     */
+    public static function getDefaultVersion(string $package): string
+    {
+        return config('docs.packages.'.$package.'.default');
+    }
+
+    /**
      * Get the documentation index page.
      *
      * @param  string  $package

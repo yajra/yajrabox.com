@@ -27,23 +27,26 @@ class DocsController extends Controller
      */
     public function showRootPage(string $package = null)
     {
+        $defaultVersion = Documentation::getDefaultVersion($package);
         $package = $package ?: DEFAULT_PACKAGE;
 
-        return redirect("docs/$package/".DEFAULT_VERSION);
+        return redirect("docs/$package/".$defaultVersion);
     }
 
     /**
      * Show a documentation page.
      *
      * @param  string  $package
-     * @param  string  $version
+     * @param  string|null  $version
      * @param  string|null  $page
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function show(string $package, string $version, string $page = null)
+    public function show(string $package, string $version = null, string $page = null)
     {
+        $defaultVersion = Documentation::getDefaultVersion($package);
+
         if (! $this->isVersion($package, $version)) {
-            return redirect("docs/$package/".DEFAULT_VERSION.'/'.$version, 301);
+            return redirect("docs/$package/".$defaultVersion.'/'.$version, 301);
         }
 
         if (! defined('CURRENT_VERSION')) {
@@ -82,8 +85,8 @@ class DocsController extends Controller
 
         $canonical = null;
 
-        if ($this->docs->pageExists($package, DEFAULT_VERSION, $sectionPage)) {
-            $canonical = "docs/$package/".DEFAULT_VERSION.'/'.$sectionPage;
+        if ($this->docs->pageExists($package, $defaultVersion, $sectionPage)) {
+            $canonical = "docs/$package/".$defaultVersion.'/'.$sectionPage;
         }
 
         return view('docs.show', [
@@ -122,13 +125,14 @@ class DocsController extends Controller
     {
         $major = Str::before($version, '.');
         $versions = Documentation::getDocVersions($package);
+        $defaultVersion = Documentation::getDefaultVersion($package);
 
-        if (Str::before(array_values($versions)[1], '.') + 1 === (int) $major) {
+        if ((int) Str::before(array_values($versions)[1], '.') + 1 === (int) $major) {
             $version = $major = 'master';
         }
 
         if (! $this->isVersion($package, $version)) {
-            return redirect("docs/$package/".DEFAULT_VERSION.'/index.json', 301);
+            return redirect("docs/$package/".$defaultVersion.'/index.json', 301);
         }
 
         if ($major !== 'master' && $major < 9) {
