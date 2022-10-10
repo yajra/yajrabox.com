@@ -28,6 +28,11 @@ class DocsController extends Controller
     public function showRootPage(string $package = null)
     {
         $package = $package ?: DEFAULT_PACKAGE;
+
+        if (Str::contains($package, 'datatables')) {
+            $package = 'laravel-datatables';
+        }
+
         $defaultVersion = Documentation::getDefaultVersion($package);
 
         return redirect("docs/$package/".$defaultVersion);
