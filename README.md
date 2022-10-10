@@ -40,3 +40,7 @@ If you pull down the upstream changes from this repository into your local repos
 ```bash
 ./bin/update.sh
 ```
+
+### Laravel Docs
+
+This docs section of this app is based on the [laravel.com](https://github.com/laravel/laravel.com) project.
