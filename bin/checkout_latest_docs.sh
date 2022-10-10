@@ -3,6 +3,9 @@
 DATATABLES=(
   master
   9.0
+  8.0
+  7.0
+  6.0
 )
 
 for v in "${DATATABLES[@]}"; do
