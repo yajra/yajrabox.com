@@ -20,35 +20,6 @@
     @include('partials.header')
 </div>
 
-<div>
-    <section class="relative overflow-hidden pt-48 pb-20 lg:pt-48 xl:pt-56 xl:pb-28">
-        <x-radial-blur class="left-[-20%] -top-24 w-[640px] h-[640px]" />
-        <div class="relative max-w-screen-xl px-5 mx-auto">
-            <div class="absolute -left-2 -translate-y-12 pointer-events-none md:left-[12%]">
-                <x-cube />
-            </div>
-            <div class="absolute -right-2 -translate-y-20 pointer-events-none md:right-1/4">
-                <x-cube :delay="2000" />
-            </div>
-            <div class="absolute bottom-0 right-6 -translate-y-20 pointer-events-none md:right-[12%]">
-                <x-cube :delay="1000" />
-            </div>
-            <div class="relative">
-                <h1 class="max-w-3xl mx-auto text-5xl font-bold text-center md:text-6xl lg:text-7xl">The PHP Framework <br class="hidden lg:inline"><span class="text-red-500">for Web Artisans</span></h1>
-                <p class="mt-6 max-w-xl mx-auto text-center text-gray-700 text-md leading-relaxed md:mt-8 md:text-lg lg:mt-10">Laravel is a web application framework with expressive, elegant syntax. We’ve already laid the foundation — freeing you to create without sweating the small things.</p>
-                <div class="mt-6 max-w-sm mx-auto flex flex-col justify-center items-center gap-4 sm:flex-row md:mt-8 lg:mt-10">
-                    <x-button.primary class="w-full sm:w-auto" href="/docs">
-                        Get Started
-                    </x-button.primary>
-                    <x-button.secondary class="w-full sm:w-auto" href="https://laracasts.com" target="_blank">
-                        Watch Laracasts
-                    </x-button.secondary>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-
 <div class="relative overflow-hidden py-16 md:pt-48">
     <span class="hidden absolute bg-radial-gradient opacity-[.15] pointer-events-none lg:inline-flex right-[-20%] top-0 w-[640px] h-[640px]"></span>
     <div class="max-w-screen-xl w-full mx-auto px-5">
