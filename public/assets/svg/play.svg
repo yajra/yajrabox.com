@@ -1,0 +1,11 @@
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+<defs>
+</defs>
+<path fill="#FFFFFF" d="M4.1,40h31.9c2.2,0,4.1-1.8,4.1-4.1V4.1C40,1.8,38.2,0,35.9,0H4.1C1.8,0,0,1.8,0,4.1v31.9
+	C0,38.2,1.8,40,4.1,40z M32.6,5.6h3.5v3.5h-3.5V5.6z M32.6,11.9h3.5v3.5h-3.5V11.9z M32.6,18.3h3.5v3.5h-3.5V18.3z M32.6,24.6h3.5
+	v3.5h-3.5V24.6z M32.6,30.9h3.5v3.5h-3.5V30.9z M12.6,12.3c0-0.9,0.9-1.4,1.7-1L27.7,19c0.7,0.4,0.7,1.5,0,2l-13.3,7.7
+	c-0.7,0.4-1.7-0.1-1.7-1V12.3z M3.9,5.6h3.5v3.5H3.9V5.6z M3.9,11.9h3.5v3.5H3.9V11.9z M3.9,18.3h3.5v3.5H3.9V18.3z M3.9,24.6h3.5
+	v3.5H3.9V24.6z M3.9,30.9h3.5v3.5H3.9V30.9z"/>
+</svg>
