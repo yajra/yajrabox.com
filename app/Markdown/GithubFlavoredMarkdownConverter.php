@@ -2,13 +2,13 @@
 
 namespace App\Markdown;
 
-use League\CommonMark\MarkdownConverter;
 use League\CommonMark\Environment\Environment;
-use App\Markdown\GithubFlavoredMarkdownExtension;
-use Torchlight\Commonmark\V2\TorchlightExtension;
 use League\CommonMark\Environment\EnvironmentInterface;
 use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\MarkdownConverter;
+use Torchlight\Commonmark\V2\TorchlightExtension;
+use function assert;
 
 /**
  * Converts GitHub Flavored Markdown to HTML.
@@ -18,7 +18,7 @@ class GithubFlavoredMarkdownConverter extends MarkdownConverter
     /**
      * Create a new Markdown converter pre-configured for GFM
      *
-     * @param array<string, mixed> $config
+     * @param  array<string, mixed>  $config
      */
     public function __construct(array $config = [])
     {
@@ -33,7 +33,7 @@ class GithubFlavoredMarkdownConverter extends MarkdownConverter
 
     public function getEnvironment(): EnvironmentInterface
     {
-        \assert($this->environment instanceof EnvironmentInterface);
+        assert($this->environment instanceof EnvironmentInterface);
 
         return $this->environment;
     }

@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Scripts -->
-    @vite(['resources/css/docs.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Styles -->
     @livewireStyles
@@ -49,8 +49,6 @@
     var version = '{{ $currentVersion ?? DEFAULT_VERSION }}';
     var package = '{{ $package ?? DEFAULT_PACKAGE }}';
 </script>
-
-{{--<script src="{{ mix('js/app.js') }}"></script>--}}
 
 @production
     <script>

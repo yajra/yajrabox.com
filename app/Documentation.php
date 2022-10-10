@@ -48,7 +48,11 @@ class Documentation
     {
         return $this->cache->remember($package.'.docs.'.$version.'.index', 5,
             function () use ($package, $version) {
-                $path = $this->getBasePath($package).$version.'/documentation.md';
+                $path = $this->getBasePath($package, $version).'/documentation.md';
+
+                if (! $this->files->exists($path)) {
+                    return '';
+                }
 
                 $content = file_get_contents($path);
 
@@ -56,7 +60,7 @@ class Documentation
                     return $this->replaceLinks($package, $version, $this->convertToMarkdown($content));
                 }
 
-                return null;
+                return '';
             }
         );
     }
@@ -65,17 +69,12 @@ class Documentation
      * Get base path of the package docs.
      *
      * @param  string  $package
+     * @param  string  $version
      * @return string
      */
-    protected function getBasePath(string $package): string
+    protected function getBasePath(string $package, string $version): string
     {
-        $paths = config('docs.paths');
-
-        if (app()->isLocal() && ! app()->runningInConsole()) {
-            $paths = config('docs.local_paths');
-        }
-
-        return $paths[$package];
+        return resource_path('docs/'.$package.'/'.$version);
     }
 
     /**
@@ -105,14 +104,19 @@ class Documentation
     {
         return $this->cache->remember($package.'.docs.'.$version.'.'.$page, 5,
             function () use ($package, $version, $page) {
-                $path = $this->getBasePath($package).$version.'/'.$page.'.md';
+                $path = $this->getBasePath($package, $version).'/'.$page.'.md';
+
+                if (! $this->files->exists($path)) {
+                    return '';
+                }
+
                 $content = file_get_contents($path);
 
                 if ($content) {
                     return $this->replaceLinks($package, $version, $this->convertToMarkdown($content));
                 }
 
-                return null;
+                return '';
             }
         );
     }
@@ -127,19 +131,9 @@ class Documentation
      */
     public function pageExists(string $package, string $version, string $page): bool
     {
-        if (app()->isLocal()) {
-            return true;
-        }
+        $path = resource_path("docs/$package/$version/$page.md");
 
-        return $this->cache->remember($package.'.docs.'.$version.'.'.$page.'.exists', 5,
-            function () use ($package, $version, $page) {
-                $file = $this->getBasePath($package).$version.'/'.$page.'.md';
-
-                $file_headers = @get_headers($file);
-
-                return $file_headers[0] == 'HTTP/1.1 200 OK';
-            }
-        );
+        return $this->files->exists($path);
     }
 
     /**
@@ -162,7 +156,7 @@ class Documentation
     {
         return $this->cache->remember('docs.{'.$package.':'.$version.'}.index', CarbonInterval::hour(1),
             function () use ($package, $version) {
-                $path = base_path("resources/docs/$package/$version/documentation.md");
+                $path = resource_path("docs/$package/$version/documentation.md");
 
                 if (! $this->files->exists($path)) {
                     return [];

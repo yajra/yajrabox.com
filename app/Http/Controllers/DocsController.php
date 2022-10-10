@@ -64,7 +64,7 @@ class DocsController extends Controller
         if ($this->docs->pageExists($package, $version, $sectionPage)) {
             $section .= '/'.$sectionPage;
         } elseif (! is_null($folder)) {
-            return redirect("/docs/$package/{$version}");
+            return redirect("/docs/$package/$version");
         }
 
         $canonical = null;
