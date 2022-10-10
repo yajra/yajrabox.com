@@ -9,22 +9,9 @@ use Illuminate\Support\Str;
  * @return string
  */
 if (! function_exists('svg')) {
-    function svg($src)
+    function svg(string $src): string
     {
         return file_get_contents(public_path('assets/svg/'.$src.'.svg'));
-    }
-}
-
-/**
- * Convert some text to Markdown...
- *
- * @param  string  $text
- * @return mixed|string
- */
-if (! function_exists('markdown')) {
-    function markdown($text)
-    {
-        return (new ParsedownExtra)->text($text);
     }
 }
 
@@ -35,7 +22,7 @@ if (! function_exists('markdown')) {
  * @return mixed
  */
 if (! function_exists('github')) {
-    function github($repo)
+    function github(string $repo)
     {
         return app('cache.store')->remember($repo, 60, function () use ($repo) {
             return app('github')->repositories()->show('yajra', $repo);
@@ -50,7 +37,7 @@ if (! function_exists('github')) {
  * @return string
  */
 if (! function_exists('package_to_title')) {
-    function package_to_title($package): array|string
+    function package_to_title(string $package): string
     {
         $title = implode(' ', array_map('ucwords', explode('-', $package)));
         if (Str::contains($title, 'Datatables')) {
