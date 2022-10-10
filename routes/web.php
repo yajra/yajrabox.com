@@ -29,7 +29,7 @@ Route::get('/', function () {
         return github($repo);
     });
 
-    return view('welcome')->with('title', 'Arjay Angeles |')->with('projects', $projects);
+    return view('welcome')->with('title', 'Arjay Angeles (yajra)')->with('projects', $projects);
 });
 
 Route::get('docs/{package?}', [DocsController::class, 'showRootPage'])->name('docs.show-root-page');
