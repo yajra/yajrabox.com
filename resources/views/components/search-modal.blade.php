@@ -65,7 +65,7 @@
                                 @keydown.arrow-down.prevent="focusNextResult(index)"
                                 @click="close()"
                             >
-                                <div x-show="hit._highlightResult.hierarchy.lvl0" class="text-sm font-medium" x-html="hit._highlightResult.hierarchy.lvl0 ? hit._highlightResult.hierarchy.lvl0.value : ''"></div>
+                                <div x-show="hit._highlightResult.h1" class="text-sm font-medium" x-html="hit._highlightResult.h1 ? hit._highlightResult.h1.value : ''"></div>
                                 <div class="mt-2">
                                     <div x-show="hit._highlightResult.h1" class="text-sm">
                                         <span class="text-red-600 opacity-75">#</span> <span x-html="hit._highlightResult.h1 ? hit._highlightResult.h1.value : ''"></span>
