@@ -61,6 +61,7 @@ class DocsController extends Controller
                 'package' => $package,
                 'content' => view('docs.missing', [
                     'otherVersions' => $otherVersions,
+                    'package' => $package,
                     'page' => $page,
                 ]),
                 'currentVersion' => $version,

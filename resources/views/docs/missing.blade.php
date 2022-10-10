@@ -8,7 +8,7 @@
     <div>
         <ul class="list-custom leading-4 space-y-3">
             @foreach($otherVersions as $key => $title)
-                <li><a href="{{ url('/docs/'.$key.'/'.$page) }}">{{ $title }}</a></li>
+                <li><a href="{{ url('/docs/'.$package.'/'.$key.'/'.$page) }}">{{ $title }}</a></li>
             @endforeach
         </ul>
     </div>
