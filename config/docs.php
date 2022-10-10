@@ -13,7 +13,7 @@ return [
         ],
 
         'laravel-acl' => [
-            'default' => '9.0',
+            'default' => 'master',
             'versions' => [
                 'master' => 'Master',
                 '5.0' => '5.0',

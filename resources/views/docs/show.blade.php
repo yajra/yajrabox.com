@@ -12,19 +12,13 @@
                 <div class="relative min-h-0 flex-1 flex flex-col xl:w-80">
                     <a href="/" class="flex items-center py-8 px-4 lg:px-8 xl:px-16">
                         <img
-                                class="w-8 h-8 shrink-0 transition-all duration-300 lg:w-12 lg:h-12"
-                                src="{{ asset('img/logomark.min.svg') }}"
-                                alt="Laravel"
-                                width="50"
-                                height="52"
-                        >
-                        <img
                                 src="{{ asset('img/logotype.min.svg') }}"
                                 alt="Laravel"
-                                class="hidden ml-4 lg:block"
+                                class="hidden lg:block"
                                 width="114"
                                 height="29"
                         >
+                        <strong>{{ Str::upper($package) }}</strong>
                     </a>
                     <div class="overflow-y-auto overflow-x-hidden px-4 lg:overflow-hidden lg:px-8 xl:px-16">
                         <nav id="indexed-nav" class="hidden lg:block lg:mt-4">
