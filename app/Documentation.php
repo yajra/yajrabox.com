@@ -54,13 +54,9 @@ class Documentation
                     return '';
                 }
 
-                $content = file_get_contents($path);
+                $content = $this->replaceLinks($package, $version, file_get_contents($path));
 
-                if ($content) {
-                    return $this->replaceLinks($package, $version, $this->convertToMarkdown($content));
-                }
-
-                return '';
+                return $this->convertToMarkdown($content);
             }
         );
     }
