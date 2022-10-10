@@ -12,7 +12,24 @@ if (! defined('DEFAULT_PACKAGE')) {
 }
 
 Route::get('/', function () {
-    return view('welcome');
+    $repositories = [
+        'laravel-datatables',
+        'laravel-datatables-html',
+        'laravel-datatables-buttons',
+        'laravel-datatables-editor',
+        'laravel-datatables-fractal',
+        'laravel-datatables-assets',
+        'laravel-oci8',
+        'laravel-acl',
+        'laravel-auditable',
+        'pdo-via-oci8',
+    ];
+
+    $projects = collect($repositories)->map(function ($repo) {
+        return github($repo);
+    });
+
+    return view('welcome')->with('title', 'Arjay Angeles |')->with('projects', $projects);
 });
 
 Route::get('docs/{package?}', [DocsController::class, 'showRootPage'])->name('docs.show-root-page');

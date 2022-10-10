@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @include('system.meta')
+    @include('partials.meta')
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://use.typekit.net/ins2wgm.css">
@@ -27,19 +27,19 @@
     @include('partials.theme')
 </head>
 <body
-    x-data="{
+        x-data="{
         navIsOpen: false,
         searchIsOpen: false,
         search: '',
     }"
-    class="language-php h-full w-full font-sans text-gray-900 antialiased"
+        class="language-php h-full w-full font-sans text-gray-900 antialiased"
 >
 
 @yield('content')
 
 @include('partials.footer')
 
-<x-search-modal />
+<x-search-modal/>
 
 <script>
     var algolia_app_id = '{{ config('algolia.connections.main.id', false) }}';

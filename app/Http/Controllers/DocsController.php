@@ -27,8 +27,8 @@ class DocsController extends Controller
      */
     public function showRootPage(string $package = null)
     {
-        $defaultVersion = Documentation::getDefaultVersion($package);
         $package = $package ?: DEFAULT_PACKAGE;
+        $defaultVersion = Documentation::getDefaultVersion($package);
 
         return redirect("docs/$package/".$defaultVersion);
     }
