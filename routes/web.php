@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('docs/{package?}', [DocsController::class, 'showRootPage']);
+Route::get('docs/{package?}', [DocsController::class, 'showRootPage'])->name('docs.show-root-page');
 Route::get('docs/{package}/{version}/index.json', [DocsController::class, 'index']);
-Route::get('docs/{package}/{version}/{page?}', [DocsController::class, 'show']);
+Route::get('docs/{package}/{version}/{page?}', [DocsController::class, 'show'])->name('docs.version');
 
 Route::middleware([
     'auth:sanctum',
