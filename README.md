@@ -43,4 +43,4 @@ If you pull down the upstream changes from this repository into your local repos
 
 ### Laravel Docs
 
-This docs section of this app is based on the [laravel.com](https://github.com/laravel/laravel.com) project.
+The document section of this app is based on the [laravel.com](https://github.com/laravel/laravel.com) project.
