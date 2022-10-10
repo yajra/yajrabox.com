@@ -18,7 +18,6 @@ Route::get('/', function () {
 Route::get('docs/{package?}', [DocsController::class, 'showRootPage']);
 Route::get('docs/{package}/{version}/index.json', [DocsController::class, 'index']);
 Route::get('docs/{package}/{version}/{page?}', [DocsController::class, 'show']);
-Route::get('docs/{package}/{version}/{folder}/{page}', [DocsController::class, 'show']);
 
 Route::middleware([
     'auth:sanctum',

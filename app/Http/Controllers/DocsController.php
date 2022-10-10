@@ -37,11 +37,10 @@ class DocsController extends Controller
      *
      * @param  string  $package
      * @param  string  $version
-     * @param  string|null  $folder
      * @param  string|null  $page
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function show(string $package, string $version, string $folder = null, string $page = null)
+    public function show(string $package, string $version, string $page = null)
     {
         if (! $this->isVersion($package, $version)) {
             return redirect("docs/$package/".DEFAULT_VERSION.'/'.$version, 301);
@@ -51,19 +50,32 @@ class DocsController extends Controller
             define('CURRENT_VERSION', $version);
         }
 
-        $sectionPage = $folder ?: 'installation';
-        if (! is_null($page)) {
-            $sectionPage .= '/'.$page;
-        }
-
+        $sectionPage = $page ?: 'installation';
         $content = $this->docs->get($package, $version, $sectionPage);
+        if (empty($content)) {
+            $otherVersions = $this->docs->versionsContainingPage($package, $page);
+
+            return response()->view('docs.show', [
+                'title' => 'Page not found',
+                'index' => $this->docs->getIndex($package, $version),
+                'package' => $package,
+                'content' => view('docs.missing', [
+                    'otherVersions' => $otherVersions,
+                    'page' => $page,
+                ]),
+                'currentVersion' => $version,
+                'versions' => Documentation::getDocVersions($package),
+                'currentSection' => $otherVersions->isEmpty() ? '' : '/'.$page,
+                'canonical' => null,
+            ], 404);
+        }
 
         $title = (new Crawler($content))->filterXPath('//h1');
 
         $section = '';
         if ($this->docs->pageExists($package, $version, $sectionPage)) {
             $section .= '/'.$sectionPage;
-        } elseif (! is_null($folder)) {
+        } elseif (! is_null($page)) {
             return redirect("/docs/$package/$version");
         }
 

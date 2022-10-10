@@ -6,6 +6,7 @@ use App\Markdown\GithubFlavoredMarkdownConverter;
 use Carbon\CarbonInterval;
 use Illuminate\Contracts\Cache\Repository as Cache;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use League\CommonMark\Output\RenderedContentInterface;
 
@@ -185,4 +186,18 @@ class Documentation
             });
     }
 
+    /**
+     * Determine which versions a page exists in.
+     *
+     * @param  string  $package
+     * @param  string  $page
+     * @return \Illuminate\Support\Collection
+     */
+    public function versionsContainingPage(string $package, string $page): Collection
+    {
+        return collect(static::getDocVersions($package))
+            ->filter(function ($version) use ($package, $page) {
+                return $this->pageExists($package, $version, $page);
+            });
+    }
 }
