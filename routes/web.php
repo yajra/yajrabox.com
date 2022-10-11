@@ -37,7 +37,7 @@ Route::get('/', function () {
         return $project;
     });
 
-    return view('welcome')->with('title', 'Arjay Angeles (yajra)')->with('projects', $projects);
+    return view('welcome')->with('title', 'Welcome')->with('projects', $projects);
 });
 
 Route::get('docs/{package?}', [DocsController::class, 'showRootPage'])->name('docs.show-root-page');
