@@ -33,7 +33,7 @@ class Documentation
      */
     public static function getDocVersions(string $package): array
     {
-        return config('docs.packages.'.$package.'.versions');
+        return config('docs.packages.'.$package.'.versions') ?? [];
     }
 
     /**

@@ -33,6 +33,10 @@ class DocsController extends Controller
             $package = 'laravel-datatables';
         }
 
+        if (Str::contains($package, 'oci8')) {
+            $package = 'laravel-oci8';
+        }
+
         $defaultVersion = Documentation::getDefaultVersion($package);
 
         return redirect("docs/$package/".$defaultVersion);
