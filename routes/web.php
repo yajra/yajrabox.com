@@ -3,6 +3,7 @@
 use App\Documentation;
 use App\Http\Controllers\DocsController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 if (! defined('DEFAULT_VERSION')) {
     define('DEFAULT_VERSION', 'master');
@@ -31,9 +32,15 @@ Route::get('/', function () {
             return github($repo);
         });
     })->map(function ($project) {
+        $projectName = $project['name'];
+
+        if(Str::contains(strtolower($project['name']), 'datatables-')){
+            $projectName = 'laravel-datatables';
+        }
+
         $project['doc_url'] = route('docs.version', [
-            'package' => $project['name'],
-            'version' => Documentation::getDefaultVersion($project['name']),
+            'package' => $projectName,
+            'version' => Documentation::getDefaultVersion($projectName),
         ]);
 
         return $project;
