@@ -29,6 +29,14 @@ This project relies on Torchlight for syntax highlighting. You will need to crea
 TORCHLIGHT_TOKEN=your-torchlight-token
 ```
 
+### Github Integration
+
+This project relies on Github for the repository statistics. You will need to create an account at [github](https://github.com/) and generate a [personal access token](https://github.com/settings/tokens) for use in this project. Once generated, add your token to your .env file:
+
+```ini
+GITHUB_TOKEN=your-github-token
+```
+
 ### Syncing Upstream Changes Into Your Fork
 
 This [GitHub article](https://help.github.com/en/articles/syncing-a-fork) provides instructions on how to pull the latest changes from this repository into your fork.
