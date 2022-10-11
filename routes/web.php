@@ -1,5 +1,6 @@
 <?php
 
+use App\Documentation;
 use App\Http\Controllers\DocsController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,13 @@ Route::get('/', function () {
 
     $projects = collect($repositories)->map(function ($repo) {
         return github($repo);
+    })->map(function ($project) {
+        $project['doc_url'] = route('docs.version', [
+            'package' => $project['name'],
+            'version' => Documentation::getDefaultVersion($project['name']),
+        ]);
+
+        return $project;
     });
 
     return view('welcome')->with('title', 'Arjay Angeles (yajra)')->with('projects', $projects);

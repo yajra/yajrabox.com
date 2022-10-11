@@ -44,7 +44,7 @@ class Documentation
      */
     public static function getDefaultVersion(string $package): string
     {
-        return config('docs.packages.'.$package.'.default');
+        return config('docs.packages.'.$package.'.default') ?? DEFAULT_VERSION;
     }
 
     /**
