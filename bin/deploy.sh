@@ -5,6 +5,6 @@ if [ ! -f composer.json ]; then
     exit 1
 fi
 
-git pull
+git pull origin main
 composer install
 source "$(dirname "$0")/checkout_latest_docs.sh"
