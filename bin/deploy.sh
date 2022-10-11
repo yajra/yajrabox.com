@@ -5,7 +5,6 @@ if [ ! -f composer.json ]; then
     exit 1
 fi
 
+git pull
 composer install
 source "$(dirname "$0")/checkout_latest_docs.sh"
-npm install
-npm run build
