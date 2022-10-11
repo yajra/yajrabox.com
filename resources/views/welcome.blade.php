@@ -24,13 +24,12 @@
     <span class="hidden absolute bg-radial-gradient opacity-[.15] pointer-events-none lg:inline-flex right-[-20%] top-0 w-[640px] h-[640px]"></span>
     <div class="max-w-screen-xl w-full mx-auto px-5">
         <h1 class="text-4xl font-bold max-w-lg md:text-5xl">Open Source Projects</h1>
-{{--        @dump($projects->first())--}}
 
         @foreach($projects->chunk(3) as $chunks)
             <div class="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach($chunks as $project)
                     <div>
-                        <a href="{{ $project['homepage'] }}">
+                        <a href="{{ $project['doc_url'] }}">
                             <h3 class="mt-5 text-xl font-bold">{{$project['name']}}</h3>
                         </a>
 
