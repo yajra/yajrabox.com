@@ -27,7 +27,9 @@ Route::get('/', function () {
     ];
 
     $projects = collect($repositories)->map(function ($repo) {
-        return github($repo);
+        return cache()->remember($repo, now()->addDay(), function () use ($repo) {
+            return github($repo);
+        });
     })->map(function ($project) {
         $project['doc_url'] = route('docs.version', [
             'package' => $project['name'],
