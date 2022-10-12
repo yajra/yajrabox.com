@@ -1,7 +1,7 @@
 @props(['adSlot', 'publisher' => 'ca-pub-2399525660597307', 'type' => 'auto'])
 
 @production
-    <div class="ads-for-server-maintenance" {{ $attributes->exceptProps(['adSlot', 'publisher', 'type']) }}>
+    <div class="ads-for-server-maintenance bg-dark-900 mt-6" {{ $attributes->exceptProps(['adSlot', 'publisher', 'type']) }}>
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="{{ $publisher }}"
