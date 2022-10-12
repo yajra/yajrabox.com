@@ -7,19 +7,21 @@
     <x-accessibility.skip-to-content-link/>
 
     <div class="relative overflow-auto dark:bg-dark-700" id="docsScreen">
+
         <div class="relative lg:flex lg:items-start">
             <aside class="hidden fixed top-0 bottom-0 left-0 z-20 h-full w-16 bg-gradient-to-b from-gray-100 to-white transition-all duration-300 overflow-hidden lg:sticky lg:w-80 lg:shrink-0 lg:flex lg:flex-col lg:justify-end lg:items-end 2xl:max-w-lg 2xl:w-full dark:from-dark-800 dark:to-dark-700">
                 <div class="relative min-h-0 flex-1 flex flex-col xl:w-80">
                     <a href="/" class="flex items-center py-8 px-4 lg:px-8 xl:px-16">
                         <img
                                 src="{{ asset('img/logotype.min.svg') }}"
-                                alt="Laravel"
+                                alt="{{ config('app.name') }}"
                                 class="hidden lg:block"
                                 width="114"
                                 height="29"
                         >
-                        <strong>{{ Str::upper($package) }}</strong>
+                        <h1 class="font-bold">{{ package_to_title($package) }}</h1>
                     </a>
+
                     <div class="overflow-y-auto overflow-x-hidden px-4 lg:overflow-hidden lg:px-8 xl:px-16">
                         <nav id="indexed-nav" class="hidden lg:block lg:mt-4">
                             <div class="docs_sidebar">
@@ -38,8 +40,8 @@
                 <div class="relative mx-auto w-full py-10 bg-white transition duration-200 dark:bg-dark-700">
                     <div class="mx-auto px-8 sm:px-16 flex items-center justify-between">
                         <a href="/" class="flex items-center">
-                            <img class="" src="{{ asset('img/logomark.min.svg') }}" alt="Laravel">
-                            <img class="hidden ml-5 sm:block" src="{{ asset('img/logotype.min.svg') }}" alt="Laravel">
+                            <img class="hidden sm:block" height="29" width="114" src="{{ asset('img/logotype.min.svg') }}" alt="{{ config('app.name') }}">
+                            <h3 class="font-bold ml-5 text-2xl">{{ package_to_title($package) }}</h3>
                         </a>
                         <div class="flex-1 flex items-center justify-end">
                             <button id="header__sun" onclick="toSystemMode()" title="Switch to system theme"
@@ -88,6 +90,7 @@
                     </div>
                     <span :class="{ 'shadow-sm': navIsOpen }" class="absolute inset-0 z-20 pointer-events-none"></span>
                 </div>
+
                 <div
                         x-show="navIsOpen"
                         x-transition:enter="duration-150"
@@ -107,6 +110,8 @@
                     >
                         <div class="relative p-8 bg-white docs_sidebar dark:bg-dark-600">
                             {!! $index !!}
+
+                            <x-ads />
                         </div>
                     </nav>
                 </div>
@@ -184,7 +189,7 @@
 
                     <section class="mt-8 md:mt-16">
                         <section class="docs_main max-w-prose">
-                            @unless ($currentVersion == 'master' || version_compare($currentVersion, DEFAULT_VERSION) >= 0)
+                            @unless ($currentVersion == 'master' || version_compare($currentVersion, $defaultVersion) >= 0)
                                 <blockquote>
                                     <div class="mb-10 max-w-2xl mx-auto px-4 py-8 shadow-lg dark:bg-dark-600 lg:flex lg:items-center">
                                         <div class="w-20 h-20 mb-6 flex items-center justify-center shrink-0 bg-orange-600 lg:mb-0">
@@ -196,13 +201,13 @@
                                             <strong>WARNING</strong> You're browsing the documentation for an old
                                             version of <strong>{{ Str::upper($package) }}</strong>.
                                             Consider upgrading your project to <a
-                                                    href="{{ route('docs.version', DEFAULT_VERSION) }}">Laravel {{ DEFAULT_VERSION }}</a>.
+                                                    href="{{ route('docs.version', compact('package')) }}">{{ $package }} {{ $defaultVersion }}</a>.
                                         </p>
                                     </div>
                                 </blockquote>
                             @endunless
 
-                            @if ($currentVersion == 'master' || version_compare($currentVersion, DEFAULT_VERSION) > 0)
+                            @if ($currentVersion == 'master' || version_compare($currentVersion, $defaultVersion) > 0)
                                 <blockquote>
                                     <div class="callout">
                                         <div class="mb-10 max-w-2xl mx-auto px-4 py-8 shadow-lg lg:flex lg:items-center">
@@ -213,7 +218,7 @@
 
                                             <p class="mb-0 lg:ml-4">
                                                 <strong>WARNING</strong> You're browsing the documentation for an
-                                                upcoming version of <strong>{{ Str::upper($package) }}</strong>.
+                                                upcoming version of <strong>{{ package_to_title($package) }}</strong>.
                                                 The documentation and features of this release are subject to change.
                                             </p>
                                         </div>
@@ -222,6 +227,8 @@
                             @endif
 
                             <x-accessibility.main-content-wrapper>
+                                <x-ads />
+
                                 {!! $content !!}
                             </x-accessibility.main-content-wrapper>
                         </section>
