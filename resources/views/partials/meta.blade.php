@@ -38,6 +38,6 @@
 <link rel="mask-icon" href="{{ asset('img/favicon/safari-pinned-tab.svg" color="#ff2d20') }}">
 <link rel="shortcut icon" href="{{ asset('img/favicon/favicon.ico') }}">
 <meta name="msapplication-TileColor" content="#ff2d20">
-<meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+<meta name="msapplication-config" content="{{ asset('img/favicon/browserconfig.xml') }}">
 <meta name="theme-color" content="#ffffff">
 <meta name="color-scheme" content="light">
