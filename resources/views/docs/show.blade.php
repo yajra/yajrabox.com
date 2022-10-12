@@ -120,7 +120,7 @@
                                             <strong>WARNING</strong> You're browsing the documentation for an old
                                             version of <strong>{{ Str::upper($package) }}</strong>.
                                             Consider upgrading your project to <a
-                                                    href="{{ route('docs.version', compact('package')) }}">{{ $package }} {{ $defaultVersion }}</a>.
+                                                    href="{{ route('docs.version', ['package' => $package, 'version' => $defaultVersion]) }}">{{ $package }} {{ $defaultVersion }}</a>.
                                         </p>
                                     </div>
                                 </blockquote>
