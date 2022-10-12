@@ -1,4 +1,13 @@
 .docs_sidebar {
+    h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.25em;
+        letter-spacing: -.33px;
+        margin-top: 1.5em;
+        margin-bottom: 0.75em;
+    }
+
     ul {
         list-style-type: none;
         margin: 0;
