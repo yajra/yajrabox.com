@@ -27,7 +27,7 @@
                             <div class="docs_sidebar">
                                 {!! $index !!}
 
-{{--                                <x-ads ad-slot="6510738472" />--}}
+                                <x-ads ad-slot="6510738472" />
                             </div>
                         </nav>
                     </div>
@@ -228,7 +228,7 @@
                             @endif
 
                             <x-accessibility.main-content-wrapper>
-{{--                                <x-ads ad-slot="5965792075" />--}}
+{{--                                <x-ads ad-slot="6524198363" />--}}
 
                                 {!! $content !!}
                             </x-accessibility.main-content-wrapper>
