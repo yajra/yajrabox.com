@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/ins2wgm.css">
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css'])
 
     <!-- Styles -->
     @livewireStyles
@@ -71,14 +71,6 @@
 </div>
 
 @include('partials.footer')
-
-<script>
-    var algolia_app_id = '{{ config('algolia.connections.main.id', false) }}';
-    var algolia_search_key = '{{ config('algolia.connections.main.search_key', false) }}';
-    var version = '{{ $currentVersion ?? DEFAULT_VERSION }}';
-    var package = '{{ $package ?? DEFAULT_PACKAGE }}';
-</script>
-
 @include('partials.analytics')
 </body>
 </html>

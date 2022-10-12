@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/ins2wgm.css">
 
     <!-- Scripts -->
-    @vite(['resources/css/docs.css', 'resources/js/app.js'])
+    @vite(['resources/css/docs.css', 'resources/js/docs.js'])
 
     <!-- Styles -->
     @livewireStyles
