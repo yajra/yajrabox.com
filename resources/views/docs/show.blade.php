@@ -26,12 +26,15 @@
                         <nav id="indexed-nav" class="hidden lg:block lg:mt-4">
                             <div class="docs_sidebar">
                                 {!! $index !!}
+
+                                <x-ads ad-slot="6510738472" />
                             </div>
                         </nav>
                     </div>
                 </div>
             </aside>
 
+            {{-- Responsive Menu --}}
             <header
                     class="lg:hidden"
                     @keydown.window.escape="navIsOpen = false"
@@ -225,7 +228,7 @@
                             @endif
 
                             <x-accessibility.main-content-wrapper>
-                                <x-ads />
+                                <x-ads ad-slot="5965792075" />
 
                                 {!! $content !!}
                             </x-accessibility.main-content-wrapper>

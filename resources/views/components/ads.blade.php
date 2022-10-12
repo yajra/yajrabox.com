@@ -1,11 +1,12 @@
+@props(['adSlot', 'publisher' => 'ca-pub-2399525660597307'])
+
 @production
     <div class="ads-for-server-maintenance">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- Responsive Side Ad -->
         <ins class="adsbygoogle"
              style="display:block"
-             data-ad-client="ca-pub-2399525660597307"
-             data-ad-slot="6510738472"
+             data-ad-client="{{ $publisher }}"
+             data-ad-slot="{{ $adSlot }}"
              data-ad-format="auto"></ins>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
