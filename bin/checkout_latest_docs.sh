@@ -2,6 +2,7 @@
 
 DATATABLES=(
   master
+  10.0
   9.0
   8.0
   7.0
@@ -10,7 +11,7 @@ DATATABLES=(
 
 for v in "${DATATABLES[@]}"; do
     if [ -d "resources/docs/laravel-datatables/$v" ]; then
-        echo "Pulling latest documentation updates for $v..."
+        echo "Pulling latest laravel-datatables documentation updates for $v..."
         (cd resources/docs/laravel-datatables/$v && git pull)
     else
         echo "Cloning $v..."
@@ -28,7 +29,7 @@ ACL=(
 
 for v in "${ACL[@]}"; do
     if [ -d "resources/docs/laravel-acl/$v" ]; then
-        echo "Pulling latest documentation updates for $v..."
+        echo "Pulling latest laravel-acl documentation updates for $v..."
         (cd resources/docs/laravel-acl/$v && git pull)
     else
         echo "Cloning $v..."
@@ -47,7 +48,7 @@ OCI8=(
 
 for v in "${OCI8[@]}"; do
     if [ -d "resources/docs/laravel-oci8/$v" ]; then
-        echo "Pulling latest documentation updates for $v..."
+        echo "Pulling latest laravel-oci8 documentation updates for $v..."
         (cd resources/docs/laravel-oci8/$v && git pull)
     else
         echo "Cloning $v..."
@@ -63,7 +64,7 @@ AUDITABLE=(
 
 for v in "${AUDITABLE[@]}"; do
     if [ -d "resources/docs/laravel-auditable/$v" ]; then
-        echo "Pulling latest documentation updates for $v..."
+        echo "Pulling latest laravel-auditable documentation updates for $v..."
         (cd resources/docs/laravel-auditable/$v && git pull)
     else
         echo "Cloning $v..."
