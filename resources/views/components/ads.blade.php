@@ -1,4 +1,4 @@
-@props(['adSlot', 'publisher' => 'ca-pub-2399525660597307'])
+@props(['adSlot', 'publisher' => 'ca-pub-2399525660597307', 'type' => 'auto'])
 
 @production
     <div class="ads-for-server-maintenance">
@@ -7,7 +7,7 @@
              style="display:block"
              data-ad-client="{{ $publisher }}"
              data-ad-slot="{{ $adSlot }}"
-             data-ad-format="auto"></ins>
+             data-ad-format="{{ $type }}"></ins>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>

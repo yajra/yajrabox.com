@@ -25,6 +25,9 @@
     </script>
 
     @include('partials.theme')
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2399525660597307"
+            crossorigin="anonymous"></script>
 </head>
 <body
         x-data="{
