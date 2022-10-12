@@ -110,8 +110,6 @@
                     >
                         <div class="relative p-8 bg-white docs_sidebar dark:bg-dark-600">
                             {!! $index !!}
-
-                            <x-ads />
                         </div>
                     </nav>
                 </div>
