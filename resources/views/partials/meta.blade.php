@@ -13,21 +13,21 @@
 @endif
 
 <!-- Primary Meta Tags -->
-<meta name="title" content="YajraBox - yajra open source project website">
-<meta name="description" content="Arjay Angeles (yajra) open source project website.">
+<meta name="title" content="YajraBox - Arjay Angeles aka yajra OSS projects">
+<meta name="description" content="Arjay Angeles, also known as yajra, is an open source software advocate and a Laravel enthusiast. He is the author of many open source projects and a contributor to the Laravel community.">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ asset('/') }}">
-<meta property="og:title" content="YajraBox - yajra open source project website">
-<meta property="og:description" content="Arjay Angeles (yajra) open source project website.">
+<meta property="og:title" content="YajraBox - Arjay Angeles aka yajra OSS projects">
+<meta property="og:description" content="Arjay Angeles, also known as yajra, is an open source software advocate and a Laravel enthusiast. He is the author of many open source projects and a contributor to the Laravel community.">
 <meta property="og:image" content="{{ asset('img/og-image.jpg') }}">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="{{ asset('/') }}">
-<meta property="twitter:title" content="YajraBox - yajra open source project website">
-<meta property="twitter:description" content="Arjay Angeles (yajra) open source project website.">
+<meta property="twitter:title" content="YajraBox - Arjay Angeles aka yajra OSS projects">
+<meta property="twitter:description" content="Arjay Angeles, also known as yajra, is an open source software advocate and a Laravel enthusiast. He is the author of many open source projects and a contributor to the Laravel community.">
 <meta property="twitter:image" content="{{ asset('img/og-image.jpg') }}">
 
 <!-- Favicon -->
@@ -35,7 +35,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon/favicon-32x32.png') }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon/favicon-16x16.png') }}">
 <link rel="manifest" href="{{ asset('img/favicon/site.webmanifest') }}">
-<link rel="mask-icon" href="{{ asset('img/favicon/safari-pinned-tab.svg" color="#ff2d20') }}">
+<link rel="mask-icon" href="{{ asset('img/favicon/safari-pinned-tab.svg') }}" color="#ff2d20">
 <link rel="shortcut icon" href="{{ asset('img/favicon/favicon.ico') }}">
 <meta name="msapplication-TileColor" content="#ff2d20">
 <meta name="msapplication-config" content="{{ asset('img/favicon/browserconfig.xml') }}">
