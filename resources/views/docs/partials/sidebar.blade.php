@@ -4,7 +4,7 @@
             <img
                     src="{{ asset('img/logo-yajrabox.svg') }}"
                     alt="{{ config('app.name') }}"
-                    class="hidden lg:block"
+                    class="hidden lg:block mr-2"
                     width="114"
                     height="29"
             >

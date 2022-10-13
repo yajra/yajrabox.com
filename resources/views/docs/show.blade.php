@@ -20,7 +20,7 @@
                 <div class="relative mx-auto w-full py-10 bg-white transition duration-200 dark:bg-dark-700">
                     <div class="mx-auto px-8 sm:px-16 flex items-center justify-between">
                         <a href="/" class="flex items-center">
-                            <img class="hidden sm:block" height="29" width="114" src="{{ asset('img/logotype.min.svg') }}" alt="{{ config('app.name') }}">
+                            <img class="hidden sm:block" height="29" width="114" src="{{ asset('img/logo-yajrabox.svg') }}" alt="{{ config('app.name') }}">
                             <h3 class="font-bold ml-5 text-2xl dark:text-gray-400">{{ package_to_title($package) }}</h3>
                         </a>
                         <div class="flex-1 flex items-center justify-end">
