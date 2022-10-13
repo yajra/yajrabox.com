@@ -24,16 +24,22 @@ Route::get('/', function () {
         'laravel-oci8',
         'laravel-acl',
         'laravel-auditable',
+        'laravel-address',
         'pdo-via-oci8',
+        'yajrabox.com',
     ];
 
     $projects = collect($repositories)
         ->map(function ($repo) {
-            return cache()->remember($repo, now()->addDay(), function () use ($repo) {
-                return github($repo);
-            });
+            return github($repo);
         })
         ->map(function ($project) {
+            if (! Documentation::exists($project['name'])) {
+                $project['doc_url'] = $project['html_url'];
+
+                return $project;
+            }
+
             $projectName = $project['name'];
 
             if (Str::contains(strtolower($project['name']), 'datatables-')) {
@@ -49,12 +55,8 @@ Route::get('/', function () {
                 'version' => Documentation::getDefaultVersion($projectName),
             ]);
 
-            $project['image'] = asset('img/notification-logo.png');
-
             return $project;
-        })
-        ->sortBy('stargazers_count')
-        ->reverse();
+        });
 
     return view('welcome')->with('title', 'Welcome')->with('projects', $projects);
 });
