@@ -20,7 +20,7 @@
     @include('partials.header')
 </div>
 
-<div class="relative overflow-hidden py-16 md:pt-48">
+<div class="relative overflow-hidden py-24 lg:pt-48">
     <span class="hidden absolute bg-radial-gradient opacity-[.15] pointer-events-none lg:inline-flex right-[-20%] top-0 w-[640px] h-[640px]"></span>
     <div class="relative max-w-screen-xl mx-auto px-5 pb-24">
 
