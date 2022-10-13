@@ -21,12 +21,18 @@ Route::get('/', function () {
         'laravel-datatables-editor',
         'laravel-datatables-fractal',
         'laravel-datatables-assets',
+        'laravel-datatables-scout',
+        'laravel-datatables-ui',
         'laravel-oci8',
         'laravel-acl',
         'laravel-auditable',
         'laravel-address',
+        'datatables',
+        'zillow',
         'pdo-via-oci8',
         'yajrabox.com',
+        'homestead-oracle',
+        'laravel-admin-template',
     ];
 
     $projects = collect($repositories)
