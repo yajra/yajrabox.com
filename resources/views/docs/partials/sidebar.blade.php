@@ -2,7 +2,7 @@
     <div class="relative min-h-0 flex-1 flex flex-col xl:w-80">
         <a href="/" class="flex items-center py-8 px-4 lg:px-8 xl:px-16">
             <img
-                    src="{{ asset('img/logo-yajrabox.svg') }}"
+                    src="{{ asset('img/logo.min.svg') }}"
                     alt="{{ config('app.name') }}"
                     class="hidden lg:block mr-2"
                     width="114"

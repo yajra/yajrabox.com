@@ -8,8 +8,8 @@
         <div class="max-w-screen-xl mx-auto px-5 flex items-center justify-between">
             <div class="flex-1">
                 <a href="/" class="inline-flex items-center">
-                    <img class="sm:block" src="{{ asset('img/logo-yajrabox.svg') }}" alt="{{ config('app.name') }}" width="200"
-                         height="29">
+                    <img class="w-12" src="{{ asset('img/logomark.min.svg') }}" alt="Laravel" width="50" height="52">
+                    <img class="ml-5 sm:block" src="{{ asset('img/logotype.min.svg') }}" alt="Laravel" width="114" height="29">
                 </a>
             </div>
             <ul class="relative hidden lg:flex lg:items-center lg:justify-center lg:gap-6 xl:gap-10">
