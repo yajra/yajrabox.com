@@ -8,7 +8,7 @@
                     width="114"
                     height="29"
             >
-            <h1 class="font-bold">{{ package_to_title($package) }}</h1>
+            <h1 class="font-bold dark:text-gray-400">{{ package_to_title($package) }}</h1>
         </a>
 
         <div class="overflow-y-auto overflow-x-hidden px-4 lg:overflow-hidden lg:px-8 xl:px-16">
