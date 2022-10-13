@@ -6,6 +6,7 @@ if [ ! -f composer.json ]; then
 fi
 
 composer install
+touch database/database.sqlite
 cp .env.example .env
 php artisan key:generate
 source "$(dirname "$0")/checkout_latest_docs.sh"
