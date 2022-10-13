@@ -4,7 +4,7 @@ return [
     'username' => 'yajra',
     'packages' => [
         'laravel-auditable' => [
-            'default' => 'master',
+            'default' => '4.0',
             'versions' => [
                 'master' => 'Master',
                 '4.0' => '4.0',
@@ -14,7 +14,7 @@ return [
         ],
 
         'laravel-acl' => [
-            'default' => 'master',
+            'default' => '9.0',
             'versions' => [
                 'master' => 'Master',
                 '9.0' => '9.0',
@@ -38,7 +38,7 @@ return [
         ],
 
         'laravel-oci8' => [
-            'default' => 'master',
+            'default' => '9.0',
             'versions' => [
                 'master' => 'Master',
                 '9.0' => '9.0',
