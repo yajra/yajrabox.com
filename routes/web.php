@@ -34,8 +34,12 @@ Route::get('/', function () {
     })->map(function ($project) {
         $projectName = $project['name'];
 
-        if(Str::contains(strtolower($project['name']), 'datatables-')){
+        if (Str::contains(strtolower($project['name']), 'datatables-')) {
             $projectName = 'laravel-datatables';
+        }
+
+        if (Str::contains(strtolower($project['name']), 'oci8')) {
+            $projectName = 'laravel-oci8';
         }
 
         $project['doc_url'] = route('docs.version', [
