@@ -58,8 +58,9 @@ done
 
 AUDITABLE=(
   master
-  9.0
-  1.0
+  4.0
+  3.0
+  2.0
 )
 
 for v in "${AUDITABLE[@]}"; do

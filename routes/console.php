@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+Artisan::command('docs:checkout', function () {
+    exec(base_path('bin/checkout_latest_docs.sh'));
+})->purpose('Checkout latest docs from github');
