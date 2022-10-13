@@ -7,7 +7,7 @@
         <div class="text-center text-xs text-gray-700 sm:text-sm {{ $is_docs_page ? 'dark:text-gray-500' : '' }}">
             <div class="flex justify-center">
                 <div class="max-w-sm">
-                    Yajra is a software developer and a Laravel enthusiast. He is the author of many open source projects and a contributor to the Laravel community.
+                    Arjay Angeles, also known as "<cite>yajra</cite>", is an open source software advocate and a Laravel enthusiast. He is the author of many open source projects and a contributor to the Laravel community.
                 </div>
             </div>
             <div>

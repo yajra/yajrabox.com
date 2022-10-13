@@ -8,17 +8,15 @@
         <div class="max-w-screen-xl mx-auto px-5 flex items-center justify-between">
             <div class="flex-1">
                 <a href="/" class="inline-flex items-center">
-                    <img class="sm:block" src="{{ asset('img/logotype.min.svg') }}" alt="{{ config('app.name') }}" width="114"
+                    <img class="sm:block" src="{{ asset('assets/img/yajrabox-lg.png') }}" alt="{{ config('app.name') }}" width="114"
                          height="29">
                 </a>
             </div>
             <ul class="relative hidden lg:flex lg:items-center lg:justify-center lg:gap-6 xl:gap-10">
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Support</a></li>
-                <li><a href="#">About</a></li>
+{{--                <li><a href="#">Support</a></li>--}}
             </ul>
             <div class="flex-1 flex items-center justify-end">
-                <x-button.secondary href="https://github.com/yajra" class="hidden lg:ml-4 lg:inline-flex">Github</x-button.secondary>
+                <x-button.secondary href="https://github.com/yajra" class="hidden lg:ml-4 lg:inline-flex">Github Profile</x-button.secondary>
                 <button
                         class="ml-2 relative w-10 h-10 inline-flex items-center justify-center p-2 text-gray-700 lg:hidden"
                         aria-label="Toggle Menu"
@@ -46,10 +44,7 @@
         >
             <div class="relative h-full w-full py-8 px-5 bg-white pointer-events-auto overflow-y-auto">
                 <ul>
-                    <li><a class="block w-full py-2" href="https://github.com/yajra">Github</a></li>
-                    <li class="flex sm:justify-center">
-                        <x-button.secondary class="mt-3 w-full max-w-md" href="/docs">Documentation</x-button.secondary>
-                    </li>
+                    <li><a class="block w-full py-2" href="https://github.com/yajra">Github Profile</a></li>
                 </ul>
             </div>
         </nav>

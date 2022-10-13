@@ -27,28 +27,34 @@ Route::get('/', function () {
         'pdo-via-oci8',
     ];
 
-    $projects = collect($repositories)->map(function ($repo) {
-        return cache()->remember($repo, now()->addDay(), function () use ($repo) {
-            return github($repo);
-        });
-    })->map(function ($project) {
-        $projectName = $project['name'];
+    $projects = collect($repositories)
+        ->map(function ($repo) {
+            return cache()->remember($repo, now()->addDay(), function () use ($repo) {
+                return github($repo);
+            });
+        })
+        ->map(function ($project) {
+            $projectName = $project['name'];
 
-        if (Str::contains(strtolower($project['name']), 'datatables-')) {
-            $projectName = 'laravel-datatables';
-        }
+            if (Str::contains(strtolower($project['name']), 'datatables-')) {
+                $projectName = 'laravel-datatables';
+            }
 
-        if (Str::contains(strtolower($project['name']), 'oci8')) {
-            $projectName = 'laravel-oci8';
-        }
+            if (Str::contains(strtolower($project['name']), 'oci8')) {
+                $projectName = 'laravel-oci8';
+            }
 
-        $project['doc_url'] = route('docs.version', [
-            'package' => $projectName,
-            'version' => Documentation::getDefaultVersion($projectName),
-        ]);
+            $project['doc_url'] = route('docs.version', [
+                'package' => $projectName,
+                'version' => Documentation::getDefaultVersion($projectName),
+            ]);
 
-        return $project;
-    });
+            $project['image'] = asset('img/notification-logo.png');
+
+            return $project;
+        })
+        ->sortBy('stargazers_count')
+        ->reverse();
 
     return view('welcome')->with('title', 'Welcome')->with('projects', $projects);
 });
