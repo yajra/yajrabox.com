@@ -16,7 +16,12 @@
 {{--                <li><a href="#">Support</a></li>--}}
             </ul>
             <div class="flex-1 flex items-center justify-end">
-                <x-button.secondary href="https://github.com/yajra" class="hidden lg:ml-4 lg:inline-flex">Github Profile</x-button.secondary>
+                <iframe src="https://github.com/sponsors/yajra/button" title="Sponsor yajra" height="35" width="116" style="border: 0;"></iframe>
+
+                <x-button.secondary href="https://github.com/yajra" class="hidden lg:ml-4 lg:inline-flex">
+                    <img src="{{ asset('img/social/github.min.svg') }}" class="mr-2" alt="github">
+                    Github Profile
+                </x-button.secondary>
                 <button
                         class="ml-2 relative w-10 h-10 inline-flex items-center justify-center p-2 text-gray-700 lg:hidden"
                         aria-label="Toggle Menu"
@@ -44,7 +49,12 @@
         >
             <div class="relative h-full w-full py-8 px-5 bg-white pointer-events-auto overflow-y-auto">
                 <ul>
-                    <li><a class="block w-full py-2" href="https://github.com/yajra">Github Profile</a></li>
+                    <li>
+                        <a class="block w-full py-2" href="https://github.com/yajra">
+                            <img src="{{ asset('img/social/github.min.svg') }}" class="mr-2" alt="github">
+                            Github Profile
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

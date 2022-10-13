@@ -12,6 +12,9 @@
         </a>
 
         <div class="overflow-y-auto overflow-x-hidden px-4 lg:overflow-hidden lg:px-8 xl:px-16">
+
+            <iframe src="https://github.com/sponsors/yajra/button" title="Sponsor yajra" height="35" width="116" style="border: 0;"></iframe>
+
             <nav id="indexed-nav" class="hidden lg:block lg:mt-4">
                 <div class="docs_sidebar">
                     {!! $index !!}
