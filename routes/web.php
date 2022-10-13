@@ -62,7 +62,9 @@ Route::get('/', function () {
             ]);
 
             return $project;
-        });
+        })
+        ->sortBy('stargazers_count')
+        ->reverse();
 
     return view('welcome')->with('title', 'Welcome')->with('projects', $projects);
 });
