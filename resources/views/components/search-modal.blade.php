@@ -106,7 +106,7 @@
             </div>
 
             <div class="absolute bottom-0 inset-x-0 border-t border-dark-800 text-gray-400 flex justify-end">
-                <a class="px-4 py-2 inline-block" target="_blank" href="https://www.algolia.com/?utm_source=laravel&utm_medium=link&utm_campaign=laravel_documentation_search">
+                <a class="px-4 py-2 inline-block" target="_blank" href="https://www.algolia.com/?utm_source=yajra&utm_medium=link&utm_campaign=yajra_documentation_search">
                     <img width="105" src="{{ asset('img/icons/algolia.dark.min.svg') }}" id="docs_search__algolia_dark" alt="Algolia">
                 </a>
             </div>
