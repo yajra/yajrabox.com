@@ -1,17 +1,14 @@
 @import 'tailwindcss/base';
-
 @import 'tailwindcss/components';
-
-@import "docs/_typography.css";
-@import "docs/_code.css";
-@import "docs/_sidebar_layout.css";
-@import "docs/_docs.css";
-@import "docs/_carbon_ads.css";
-@import "docs/_accessibility.css";
-
 @import 'tailwindcss/utilities';
 
+@import "docs/_accessibility.css";
+@import "docs/_carbon_ads.css";
+@import "docs/_code.css";
 @import "docs/_dark_mode.css";
+@import "docs/_docs.css";
+@import "docs/_typography.css";
+@import "docs/_sidebar_layout.css";
 
 [x-cloak] {
     display: none !important;
