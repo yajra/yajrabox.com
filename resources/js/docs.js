@@ -10,11 +10,3 @@ window.searchComponent = SearchComponent;
 
 Alpine.plugin(Focus);
 Alpine.start();
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     if (document.querySelector('#docsScreen')) {
-//         import './docs';
-//     }
-//
-//     require('./components/accessibility');
-// });
