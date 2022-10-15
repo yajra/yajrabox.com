@@ -167,10 +167,10 @@ class Documentation
                 return [
                     'pages' => collect(explode(PHP_EOL,
                         $this->replaceLinks($package, $version, $this->files->get($path))))
-                        ->filter(fn ($line) => Str::contains($line, "/docs/$package/$version/"))
-                        ->map(fn ($line) => resource_path(Str::of($line)->afterLast('(/')->before(')')
-                                                             ->replace('{{version}}', $version)->append('.md')))
-                        ->filter(fn ($path) => $this->files->exists($path))
+                        ->filter(fn($line) => Str::contains($line, "/docs/$package/$version/"))
+                        ->map(fn($line) => resource_path(Str::of($line)->afterLast('(/')->before(')')
+                                                            ->replace('{{version}}', $version)->append('.md')))
+                        ->filter(fn($path) => $this->files->exists($path))
                         ->mapWithKeys(function ($path) {
                             $contents = $this->files->get($path);
 
@@ -183,7 +183,7 @@ class Documentation
                                     'title' => $page['title'],
                                     'sections' => collect($section['fragments'])
                                         ->combine($section['titles'])
-                                        ->map(fn ($title) => ['title' => $title]),
+                                        ->map(fn($title) => ['title' => $title]),
                                 ],
                             ];
                         }),
@@ -204,5 +204,19 @@ class Documentation
             ->filter(function ($version) use ($package, $page) {
                 return $this->pageExists($package, $version, $page);
             });
+    }
+
+    /**
+     * @param $package
+     * @param $version
+     * @param $sectionPage
+     * @return string
+     */
+    public static function getRepositoryLink(string $package, string $version, string $sectionPage): string
+    {
+        $gitBasePath = 'https://github.com/yajra/';
+
+
+        return $gitBasePath.'/' .$package.'-docs/edit/'.$version.'/'.$sectionPage.'.md';
     }
 }

@@ -13,15 +13,17 @@
 
             {{-- Responsive Menu --}}
             <header
-                    class="lg:hidden"
-                    @keydown.window.escape="navIsOpen = false"
-                    @click.away="navIsOpen = false"
+                class="lg:hidden"
+                @keydown.window.escape="navIsOpen = false"
+                @click.away="navIsOpen = false"
             >
                 <div class="relative mx-auto w-full py-10 bg-white transition duration-200 dark:bg-dark-700">
                     <div class="mx-auto px-8 sm:px-16 flex items-center justify-between">
                         <a href="/" class="flex items-center">
-                            <img class="" width="50" height="50" src="{{ asset('img/logomark.min.svg') }}" alt="{{ config('app.name') }}">
-                            <img class="hidden ml-5 sm:block" height="29" width="114" src="{{ asset('img/logotype.min.svg') }}" alt="{{ config('app.name') }}">
+                            <img class="" width="50" height="50" src="{{ asset('img/logomark.min.svg') }}"
+                                 alt="{{ config('app.name') }}">
+                            <img class="hidden ml-5 sm:block" height="29" width="114"
+                                 src="{{ asset('img/logotype.min.svg') }}" alt="{{ config('app.name') }}">
                             <h3 class="font-bold ml-5 text-2xl dark:text-gray-400">{{ package_to_title($package) }}</h3>
                         </a>
                         <div class="flex-1 flex items-center justify-end">
@@ -32,7 +34,8 @@
                                      fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <circle cx="12" cy="12" r="4"></circle>
-                                    <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+                                    <path
+                                        d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
                                 </svg>
                             </button>
                             <button id="header__moon" onclick="toLightMode()" title="Switch to light mode"
@@ -49,8 +52,9 @@
                                           d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z"/>
                                 </svg>
                             </button>
-                            <button class="ml-2 relative w-10 h-10 p-2 text-red-600 lg:hidden focus:outline-none focus:shadow-outline"
-                                    aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
+                            <button
+                                class="ml-2 relative w-10 h-10 p-2 text-red-600 lg:hidden focus:outline-none focus:shadow-outline"
+                                aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
                                 <svg x-show="! navIsOpen" x-transition.opacity
                                      class="absolute inset-0 mt-2 ml-2 w-6 h-6" viewBox="0 0 24 24"
                                      stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
@@ -73,21 +77,21 @@
                 </div>
 
                 <div
-                        x-show="navIsOpen"
-                        x-transition:enter="duration-150"
-                        x-transition:leave="duration-100 ease-in"
-                        x-cloak
+                    x-show="navIsOpen"
+                    x-transition:enter="duration-150"
+                    x-transition:leave="duration-100 ease-in"
+                    x-cloak
                 >
                     <nav
-                            x-show="navIsOpen"
-                            x-cloak
-                            class="absolute w-full transform origin-top shadow-sm z-10"
-                            x-transition:enter="duration-150 ease-out"
-                            x-transition:enter-start="opacity-0 -translate-y-8 scale-75"
-                            x-transition:enter-end="opacity-100 scale-100"
-                            x-transition:leave="duration-100 ease-in"
-                            x-transition:leave-start="opacity-100 scale-100"
-                            x-transition:leave-end="opacity-0 -translate-y-8 scale-75"
+                        x-show="navIsOpen"
+                        x-cloak
+                        class="absolute w-full transform origin-top shadow-sm z-10"
+                        x-transition:enter="duration-150 ease-out"
+                        x-transition:enter-start="opacity-0 -translate-y-8 scale-75"
+                        x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="duration-100 ease-in"
+                        x-transition:leave-start="opacity-100 scale-100"
+                        x-transition:leave-end="opacity-0 -translate-y-8 scale-75"
                     >
                         <div class="relative p-8 bg-white docs_sidebar dark:bg-dark-600">
                             {!! $index !!}
@@ -99,7 +103,8 @@
             {{-- Main Content --}}
             <section class="flex-1 dark:bg-dark-700">
                 <div class="max-w-screen-lg px-8 sm:px-16 lg:px-24">
-                    <div class="flex flex-col items-end border-b border-gray-200 py-1 transition-colors dark:border-gray-700 lg:mt-8 lg:flex-row-reverse">
+                    <div
+                        class="flex flex-col items-end border-b border-gray-200 py-1 transition-colors dark:border-gray-700 lg:mt-8 lg:flex-row-reverse">
                         @include('docs.partials.theme-switcher')
 
                         @include('docs.partials.version-switcher')
@@ -111,8 +116,10 @@
                         <section class="docs_main">
                             @unless ($currentVersion == 'master' || version_compare($currentVersion, $defaultVersion) >= 0)
                                 <blockquote>
-                                    <div class="mb-10 max-w-2xl mx-auto px-4 py-8 shadow-lg dark:bg-dark-600 lg:flex lg:items-center">
-                                        <div class="w-20 h-20 mb-6 flex items-center justify-center shrink-0 bg-orange-600 lg:mb-0">
+                                    <div
+                                        class="mb-10 max-w-2xl mx-auto px-4 py-8 shadow-lg dark:bg-dark-600 lg:flex lg:items-center">
+                                        <div
+                                            class="w-20 h-20 mb-6 flex items-center justify-center shrink-0 bg-orange-600 lg:mb-0">
                                             <img src="{{ asset('/img/callouts/exclamation.min.svg') }}" alt="Icon"
                                                  class="opacity-75"/>
                                         </div>
@@ -121,7 +128,7 @@
                                             <strong>WARNING</strong> You're browsing the documentation for an old
                                             version of <strong>{{ Str::upper($package) }}</strong>.
                                             Consider upgrading your project to <a
-                                                    href="{{ route('docs.version', ['package' => $package, 'version' => $defaultVersion]) }}">{{ $package }} {{ $defaultVersion }}</a>.
+                                                href="{{ route('docs.version', ['package' => $package, 'version' => $defaultVersion]) }}">{{ $package }} {{ $defaultVersion }}</a>.
                                         </p>
                                     </div>
                                 </blockquote>
@@ -130,8 +137,10 @@
                             @if ($currentVersion == 'master' || version_compare($currentVersion, $defaultVersion) > 0)
                                 <blockquote>
                                     <div class="callout">
-                                        <div class="mb-10 max-w-2xl mx-auto px-4 py-8 shadow-lg lg:flex lg:items-center">
-                                            <div class="w-20 h-20 mb-6 flex items-center justify-center shrink-0 bg-orange-600 lg:mb-0">
+                                        <div
+                                            class="mb-10 max-w-2xl mx-auto px-4 py-8 shadow-lg lg:flex lg:items-center">
+                                            <div
+                                                class="w-20 h-20 mb-6 flex items-center justify-center shrink-0 bg-orange-600 lg:mb-0">
                                                 <img src="{{ asset('/img/callouts/exclamation.min.svg') }}" alt="Icon"
                                                      class="opacity-75"/>
                                             </div>
@@ -147,6 +156,23 @@
                             @endif
 
                             <x-accessibility.main-content-wrapper>
+                                @isset($repositoryLink)
+                                    <x-slot name="editRepoLink">
+                                        <div class="border-box">
+                                            <a title="Something wrong? You can edit the file and contribute."
+                                               class="btn-sm BtnGroup-item btn float-right" href="{{$repositoryLink}}">
+                                                <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1"
+                                                     width="16" data-view-component="true"
+                                                     class="octicon octicon-pencil">
+                                                    <path fill-rule="evenodd"
+                                                          d="M11.013 1.427a1.75 1.75 0 012.474 0l1.086 1.086a1.75 1.75 0 010 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 01-.927-.928l.929-3.25a1.75 1.75 0 01.445-.758l8.61-8.61zm1.414 1.06a.25.25 0 00-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 000-.354l-1.086-1.086zM11.189 6.25L9.75 4.81l-6.286 6.287a.25.25 0 00-.064.108l-.558 1.953 1.953-.558a.249.249 0 00.108-.064l6.286-6.286z"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <span class="btn btn-xs " {{ $repositoryLink }}
+                                    </x-slot>
+                                @endif
+
                                 {!! $content !!}
                                 {{-- <x-ads ad-slot="6524198363" />--}}
                             </x-accessibility.main-content-wrapper>

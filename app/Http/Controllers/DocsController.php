@@ -109,6 +109,7 @@ class DocsController extends Controller
             'versions' => Documentation::getDocVersions($package),
             'currentSection' => $section,
             'canonical' => $canonical,
+            'repositoryLink' => Documentation::getRepositoryLink($package, $version, $sectionPage),
         ]);
     }
 
