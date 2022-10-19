@@ -108,7 +108,7 @@
                     </div>
 
                     <section class="mt-8 md:mt-16">
-                        <section class="docs_main max-w-prose">
+                        <section class="docs_main">
                             @unless ($currentVersion == 'master' || version_compare($currentVersion, $defaultVersion) >= 0)
                                 <blockquote>
                                     <div class="mb-10 max-w-2xl mx-auto px-4 py-8 shadow-lg dark:bg-dark-600 lg:flex lg:items-center">
