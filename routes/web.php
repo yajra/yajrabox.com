@@ -21,6 +21,7 @@ Route::get('/', function () {
         'laravel-datatables-editor',
         'laravel-datatables-fractal',
         'laravel-datatables-assets',
+        'laravel-datatables-vite',
         'laravel-datatables-scout',
         'laravel-datatables-ui',
         'laravel-oci8',
