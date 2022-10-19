@@ -40,12 +40,6 @@ Route::get('/', function () {
             return github($repo);
         })
         ->map(function ($project) {
-            if (! Documentation::exists($project['name'])) {
-                $project['doc_url'] = $project['html_url'];
-
-                return $project;
-            }
-
             $projectName = $project['name'];
 
             if (Str::contains(strtolower($project['name']), 'datatables-')) {
@@ -54,6 +48,12 @@ Route::get('/', function () {
 
             if (Str::contains(strtolower($project['name']), 'oci8')) {
                 $projectName = 'laravel-oci8';
+            }
+
+            if (! Documentation::exists($projectName)) {
+                $project['doc_url'] = $project['html_url'];
+
+                return $project;
             }
 
             $project['doc_url'] = route('docs.version', [
