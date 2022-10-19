@@ -42,9 +42,11 @@ Route::get('/', function () {
         })
         ->map(function ($project) {
             $projectName = $project['name'];
+            $section = null;
 
             if (Str::contains(strtolower($project['name']), 'datatables-')) {
                 $projectName = 'laravel-datatables';
+                $section = Str::after($project['name'], 'datatables-').'-installation';
             }
 
             if (Str::contains(strtolower($project['name']), 'oci8')) {
@@ -58,9 +60,9 @@ Route::get('/', function () {
             }
 
             $project['doc_url'] = route('docs.version', [
-                'package' => $projectName,
-                'version' => Documentation::getDefaultVersion($projectName),
-            ]);
+                    'package' => $projectName,
+                    'version' => Documentation::getDefaultVersion($projectName),
+                ]).'/'.($section ?? '');
 
             return $project;
         })
