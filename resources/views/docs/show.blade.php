@@ -148,6 +148,8 @@
 
                             <x-accessibility.main-content-wrapper>
                                 {!! $content !!}
+
+                                <x-ads ad-slot="6524198363" />
                             </x-accessibility.main-content-wrapper>
                         </section>
                     </section>

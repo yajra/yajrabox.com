@@ -19,7 +19,7 @@
                 <div class="docs_sidebar">
                     {!! $index !!}
 
-                    <x-ads ad-slot="5965792075" />
+{{--                    <x-ads ad-slot="5965792075" />--}}
                 </div>
             </nav>
         </div>
