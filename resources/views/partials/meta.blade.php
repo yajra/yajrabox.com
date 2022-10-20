@@ -13,20 +13,20 @@
 @endif
 
 <!-- Primary Meta Tags -->
-<meta name="title" content="YajraBox - Arjay Angeles aka yajra OSS projects">
+<meta name="title" content="YajraBox - Arjay Angeles (yajra) open source projects">
 <meta name="description" content="Arjay Angeles, also known as yajra, is an open source software advocate and a Laravel enthusiast. He is the author of many open source projects and a contributor to the Laravel community.">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ asset('/') }}">
-<meta property="og:title" content="YajraBox - Arjay Angeles aka yajra OSS projects">
+<meta property="og:title" content="YajraBox - Arjay Angeles (yajra) open source projects">
 <meta property="og:description" content="Arjay Angeles, also known as yajra, is an open source software advocate and a Laravel enthusiast. He is the author of many open source projects and a contributor to the Laravel community.">
 <meta property="og:image" content="{{ asset('img/og-image.jpg') }}">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="{{ asset('/') }}">
-<meta property="twitter:title" content="YajraBox - Arjay Angeles aka yajra OSS projects">
+<meta property="twitter:title" content="YajraBox - Arjay Angeles (yajra) open source projects">
 <meta property="twitter:description" content="Arjay Angeles, also known as yajra, is an open source software advocate and a Laravel enthusiast. He is the author of many open source projects and a contributor to the Laravel community.">
 <meta property="twitter:image" content="{{ asset('img/og-image.jpg') }}">
 
