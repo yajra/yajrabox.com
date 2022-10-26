@@ -160,7 +160,10 @@
                                     <x-slot name="editRepoLink">
                                         <div class="border-box">
                                             <a title="Something wrong? You can edit the file and contribute."
-                                               class="btn-sm BtnGroup-item btn float-right" href="{{$repositoryLink}}">
+                                               target="_blank"
+                                               class="btn-sm btn-group-item btn float-right flex justify-between"
+                                               href="{{$repositoryLink}}"
+                                            >
                                                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1"
                                                      width="16" data-view-component="true"
                                                      class="octicon octicon-pencil">
@@ -169,7 +172,8 @@
                                                 </svg>
                                             </a>
                                         </div>
-                                        <span class="btn btn-xs " {{ $repositoryLink }}
+
+
                                     </x-slot>
                                 @endif
 

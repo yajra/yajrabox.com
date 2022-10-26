@@ -2,5 +2,6 @@
     @isset($editRepoLink)
         {{ $editRepoLink }}
     @endif
+
     {{ $slot }}
 </div>
