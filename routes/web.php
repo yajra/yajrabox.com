@@ -21,35 +21,48 @@ Route::get('/', function () {
         'laravel-datatables-editor',
         'laravel-datatables-fractal',
         'laravel-datatables-assets',
+        'laravel-datatables-vite',
+        'laravel-datatables-scout',
+        'laravel-datatables-ui',
         'laravel-oci8',
         'laravel-acl',
         'laravel-auditable',
+        'laravel-address',
+        'datatables',
+        'zillow',
         'pdo-via-oci8',
+        'yajrabox.com',
+        'homestead-oracle',
+        'laravel-admin-template',
     ];
 
     $projects = collect($repositories)
         ->map(function ($repo) {
-            return cache()->remember($repo, now()->addDay(), function () use ($repo) {
-                return github($repo);
-            });
+            return github($repo);
         })
         ->map(function ($project) {
             $projectName = $project['name'];
+            $section = null;
 
             if (Str::contains(strtolower($project['name']), 'datatables-')) {
                 $projectName = 'laravel-datatables';
+                $section = Str::after($project['name'], 'datatables-').'-installation';
             }
 
             if (Str::contains(strtolower($project['name']), 'oci8')) {
                 $projectName = 'laravel-oci8';
             }
 
-            $project['doc_url'] = route('docs.version', [
-                'package' => $projectName,
-                'version' => Documentation::getDefaultVersion($projectName),
-            ]);
+            if (! Documentation::exists($projectName)) {
+                $project['doc_url'] = $project['html_url'];
 
-            $project['image'] = asset('img/notification-logo.png');
+                return $project;
+            }
+
+            $project['doc_url'] = route('docs.version', [
+                    'package' => $projectName,
+                    'version' => Documentation::getDefaultVersion($projectName),
+                ]).'/'.($section ?? '');
 
             return $project;
         })

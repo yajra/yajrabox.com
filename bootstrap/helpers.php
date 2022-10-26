@@ -24,7 +24,7 @@ if (! function_exists('svg')) {
 if (! function_exists('github')) {
     function github(string $repo)
     {
-        return app('cache.store')->remember($repo, 60, function () use ($repo) {
+        return app('cache.store')->remember($repo.':stats', now()->addDay(), function () use ($repo) {
             return app('github')->repositories()->show('yajra', $repo);
         });
     }

@@ -29,17 +29,6 @@ class Documentation
      * Get the publicly available versions of the documentation
      *
      * @param  string  $package
-     * @return array
-     */
-    public static function getDocVersions(string $package): array
-    {
-        return config('docs.packages.'.$package.'.versions') ?? [];
-    }
-
-    /**
-     * Get the publicly available versions of the documentation
-     *
-     * @param  string  $package
      * @return string
      */
     public static function getDefaultVersion(string $package): string
@@ -84,6 +73,17 @@ class Documentation
     }
 
     /**
+     * Check if documentation exists for the given package.
+     *
+     * @param  string  $package
+     * @return bool
+     */
+    public static function exists(string $package): bool
+    {
+        return (bool) config('docs.packages.'.$package);
+    }
+
+    /**
      * Replace the version place-holder in links.
      *
      * @param  string  $package
@@ -96,46 +96,6 @@ class Documentation
         $content = str_replace('{{package}}', $package, $content);
 
         return str_replace('{{version}}', $version, $content);
-    }
-
-    /**
-     * Get the given documentation page.
-     *
-     * @param  string  $package
-     * @param  string  $version
-     * @param  string  $page
-     * @return string
-     */
-    public function get(string $package, string $version, string $page): string
-    {
-        return $this->cache->remember($package.'.docs.'.$version.'.'.$page, 5,
-            function () use ($package, $version, $page) {
-                $path = $this->getBasePath($package, $version).'/'.$page.'.md';
-
-                if (! $this->files->exists($path)) {
-                    return '';
-                }
-
-                $content = $this->replaceLinks($package, $version, file_get_contents($path));
-
-                return $this->convertToMarkdown($content);
-            }
-        );
-    }
-
-    /**
-     * Check if the given section exists.
-     *
-     * @param  string  $package
-     * @param  string  $version
-     * @param  string  $page
-     * @return bool
-     */
-    public function pageExists(string $package, string $version, string $page): bool
-    {
-        $path = resource_path("docs/$package/$version/$page.md");
-
-        return $this->files->exists($path);
     }
 
     /**
@@ -192,6 +152,31 @@ class Documentation
     }
 
     /**
+     * Get the given documentation page.
+     *
+     * @param  string  $package
+     * @param  string  $version
+     * @param  string  $page
+     * @return string
+     */
+    public function get(string $package, string $version, string $page): string
+    {
+        return $this->cache->remember($package.'.docs.'.$version.'.'.$page, 5,
+            function () use ($package, $version, $page) {
+                $path = $this->getBasePath($package, $version).'/'.$page.'.md';
+
+                if (! $this->files->exists($path)) {
+                    return '';
+                }
+
+                $content = $this->replaceLinks($package, $version, file_get_contents($path));
+
+                return $this->convertToMarkdown($content);
+            }
+        );
+    }
+
+    /**
      * Determine which versions a page exists in.
      *
      * @param  string  $package
@@ -207,6 +192,31 @@ class Documentation
     }
 
     /**
+     * Get the publicly available versions of the documentation
+     *
+     * @param  string  $package
+     * @return array
+     */
+    public static function getDocVersions(string $package): array
+    {
+        return config('docs.packages.'.$package.'.versions') ?? [];
+    }
+
+    /**
+     * Check if the given section exists.
+     *
+     * @param  string  $package
+     * @param  string  $version
+     * @param  string  $page
+     * @return bool
+     */
+    public function pageExists(string $package, string $version, string $page): bool
+    {
+        $path = resource_path("docs/$package/$version/$page.md");
+
+        return $this->files->exists($path);
+	}
+
      * @param $package
      * @param $version
      * @param $sectionPage
@@ -215,7 +225,6 @@ class Documentation
     public static function getRepositoryLink(string $package, string $version, string $sectionPage): string
     {
         $gitBasePath = 'https://github.com/yajra/';
-
 
         return $gitBasePath.'/' .$package.'-docs/edit/'.$version.'/'.$sectionPage.'.md';
     }
