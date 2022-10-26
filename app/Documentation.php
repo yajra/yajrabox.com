@@ -217,14 +217,15 @@ class Documentation
         return $this->files->exists($path);
 	}
 
-     * @param $package
-     * @param $version
-     * @param $sectionPage
+    /**
+     * @param  string  $package
+     * @param  string  $version
+     * @param  string  $sectionPage
      * @return string
      */
     public static function getRepositoryLink(string $package, string $version, string $sectionPage): string
     {
-        $gitBasePath = 'https://github.com/yajra/';
+        $gitBasePath = 'https://github.com/yajra';
 
         return $gitBasePath.'/' .$package.'-docs/edit/'.$version.'/'.$sectionPage.'.md';
     }
