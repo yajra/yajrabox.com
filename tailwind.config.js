@@ -8,7 +8,7 @@ module.exports = {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './resources/js/**/*.js',
+        './resources/docs/**/*.md',
     ],
     darkMode: 'class',
     theme: {
@@ -114,7 +114,7 @@ module.exports = {
     },
 
     plugins: [
-        require('@tailwindcss/forms'),
-        require('@tailwindcss/typography')
+        // require('@tailwindcss/forms'),
+        // require('@tailwindcss/typography')
     ],
 };
