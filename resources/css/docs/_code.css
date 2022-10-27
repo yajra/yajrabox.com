@@ -113,7 +113,7 @@ pre code.torchlight .line {
         &:before {
             @apply block w-4 h-4 mr-1 bg-gray-700;
             content: '';
-            mask-image: url('../images/icons/document.svg');
+            mask-image: url('../../images/icons/document.svg');
             mask-repeat: no-repeat;
             mask-size: 100%
         }
