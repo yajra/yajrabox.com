@@ -38,6 +38,10 @@
     & ul li h2, & ul li a {
         @apply dark:text-gray-400;
     }
+
+    & h3 {
+        @apply dark:text-gray-200;
+    }
 }
 
 /* Pound sign before headings */
