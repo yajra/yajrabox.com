@@ -1,4 +1,4 @@
-<div id="main-content">
+<div id="main-content" class="mb-10">
     @isset($editRepoLink)
         {{ $editRepoLink }}
     @endif
