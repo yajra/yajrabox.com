@@ -7,9 +7,9 @@ export default function () {
         hits: [],
         searching: false,
         init() {
-            const searchClient = algoliasearch(algolia_app_id, algolia_search_key);
+            const searchClient = algoliasearch(window.algolia_app_id, window.algolia_search_key);
 
-            const index = searchClient.initIndex('docs:' + window.package);
+            const index = searchClient.initIndex('yajrabox');
 
             this.$watch('search', (query) => {
                 if (!query) {
@@ -22,8 +22,7 @@ export default function () {
 
                 index.search(query, {
                     hitsPerPage: 5,
-                    tagFilters: [window.version],
-                    // facetFilters: [window.version],
+                    facetFilters: ['version: ' + window.version, 'package: ' + window.package],
                     highlightPreTag: '<em class="not-italic bg-red-600 bg-opacity-25">',
                     highlightPostTag: '</em>'
                 }).then(({hits}) => {
