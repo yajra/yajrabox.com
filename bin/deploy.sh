@@ -5,7 +5,7 @@ if [ ! -f composer.json ]; then
     exit 1
 fi
 
-git pull origin main
+git pull
 composer install
 php artisan config:cache
 php artisan route:cache
