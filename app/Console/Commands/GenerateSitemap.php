@@ -33,29 +33,34 @@ class GenerateSitemap extends Command
     public function handle()
     {
         SitemapGenerator::create(config('app.url'))
-            ->shouldCrawl(function (UriInterface $url) {
-                // Crawl everything without "docs" in the path, as we'll crawl the docs separately...
-                return ! Str::contains($url->getPath(), 'docs');
-            })
-            ->hasCrawled(function (Url $url) {
-                if ($url->segment(1) === 'team') {
-                    $url->setPriority(0.5);
-                }
+                        ->shouldCrawl(function (UriInterface $url) {
+                            // Crawl everything without "docs" in the path, as we'll crawl the docs separately...
+                            return ! Str::contains($url->getPath(), 'docs');
+                        })
+                        ->hasCrawled(function (Url $url) {
+                            if ($url->segment(1) === 'team') {
+                                $url->setPriority(0.5);
+                            }
 
-                return $url;
-            })
-            ->writeToFile(public_path('sitemap_pages.xml'));
+                            return $url;
+                        })
+                        ->writeToFile(public_path('sitemap_pages.xml'));
 
-        SitemapGenerator::create(config('app.url').'/docs/'.DEFAULT_VERSION)
-            ->shouldCrawl(function (UriInterface $url) {
-                return Str::contains($url->getPath(), 'docs');
-            })
-            ->writeToFile(public_path('sitemap_docs.xml'));
+        $sitemapIndex = SitemapIndex::create()
+                                    ->add('sitemap_pages.xml');
 
-        SitemapIndex::create()
-            ->add('sitemap_pages.xml')
-            ->add('sitemap_docs.xml')
-            ->writeToFile(public_path('sitemap.xml'));
+        foreach (config('docs.packages') as $package => $options) {
+            SitemapGenerator::create(config('app.url').'/docs/'.$package)
+                            ->shouldCrawl(function (UriInterface $url) {
+                                return Str::contains($url->getPath(), 'docs');
+                            })
+                            ->writeToFile(public_path('sitemap_'.$package.'.xml'));
+
+            $sitemapIndex->add('sitemap_'.$package.'.xml');
+        }
+
+
+        $sitemapIndex->writeToFile(public_path('sitemap.xml'));
 
         return 0;
     }
