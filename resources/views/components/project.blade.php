@@ -47,4 +47,18 @@
             </svg>
         </a>
     </div>
+
+    <ul class="flex items-center space-x-2 mt-4">
+        @foreach($project['versions'] as $version)
+            @if($loop->first)
+                <li class="text-xs">Doc Versions:</li>
+            @endif
+
+            <li>
+                <a href="{{ route('docs.version', [$project['doc'], Str::lower($version)]).$project['section'] }}"
+                   class="bg-blue-500 px-1 rounded border text-white text-xs"
+                >{{ $version }}</a>
+            </li>
+        @endforeach
+    </ul>
 </blockquote>

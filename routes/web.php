@@ -53,16 +53,24 @@ Route::get('/', function () {
                 $projectName = 'laravel-oci8';
             }
 
+            $project['doc'] = $projectName;
             if (! Documentation::exists($projectName)) {
                 $project['doc_url'] = $project['html_url'];
 
                 return $project;
             }
 
+            $project['section'] = '/'.($section ?? '');
+
             $project['doc_url'] = route('docs.version', [
                     'package' => $projectName,
                     'version' => Documentation::getDefaultVersion($projectName),
-                ]).'/'.($section ?? '');
+                ]).$project['section'];
+
+            return $project;
+        })
+        ->map(function ($project) {
+            $project['versions'] = array_keys(Documentation::getDocVersions($project['doc']));
 
             return $project;
         })
