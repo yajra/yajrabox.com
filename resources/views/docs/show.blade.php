@@ -13,9 +13,9 @@
 
             {{-- Responsive Menu --}}
             <header
-                class="lg:hidden"
-                @keydown.window.escape="navIsOpen = false"
-                @click.away="navIsOpen = false"
+                    class="lg:hidden"
+                    @keydown.window.escape="navIsOpen = false"
+                    @click.away="navIsOpen = false"
             >
                 <div class="relative mx-auto w-full py-10 bg-white transition duration-200 dark:bg-dark-700">
                     <div class="mx-auto px-8 sm:px-16 flex items-center justify-between">
@@ -35,7 +35,7 @@
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <circle cx="12" cy="12" r="4"></circle>
                                     <path
-                                        d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+                                            d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
                                 </svg>
                             </button>
                             <button id="header__moon" onclick="toLightMode()" title="Switch to light mode"
@@ -53,8 +53,8 @@
                                 </svg>
                             </button>
                             <button
-                                class="ml-2 relative w-10 h-10 p-2 text-red-600 lg:hidden focus:outline-none focus:shadow-outline"
-                                aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
+                                    class="ml-2 relative w-10 h-10 p-2 text-red-600 lg:hidden focus:outline-none focus:shadow-outline"
+                                    aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
                                 <svg x-show="! navIsOpen" x-transition.opacity
                                      class="absolute inset-0 mt-2 ml-2 w-6 h-6" viewBox="0 0 24 24"
                                      stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
@@ -77,21 +77,21 @@
                 </div>
 
                 <div
-                    x-show="navIsOpen"
-                    x-transition:enter="duration-150"
-                    x-transition:leave="duration-100 ease-in"
-                    x-cloak
+                        x-show="navIsOpen"
+                        x-transition:enter="duration-150"
+                        x-transition:leave="duration-100 ease-in"
+                        x-cloak
                 >
                     <nav
-                        x-show="navIsOpen"
-                        x-cloak
-                        class="absolute w-full transform origin-top shadow-sm z-10"
-                        x-transition:enter="duration-150 ease-out"
-                        x-transition:enter-start="opacity-0 -translate-y-8 scale-75"
-                        x-transition:enter-end="opacity-100 scale-100"
-                        x-transition:leave="duration-100 ease-in"
-                        x-transition:leave-start="opacity-100 scale-100"
-                        x-transition:leave-end="opacity-0 -translate-y-8 scale-75"
+                            x-show="navIsOpen"
+                            x-cloak
+                            class="absolute w-full transform origin-top shadow-sm z-10"
+                            x-transition:enter="duration-150 ease-out"
+                            x-transition:enter-start="opacity-0 -translate-y-8 scale-75"
+                            x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:leave="duration-100 ease-in"
+                            x-transition:leave-start="opacity-100 scale-100"
+                            x-transition:leave-end="opacity-0 -translate-y-8 scale-75"
                     >
                         <div class="relative p-8 bg-white docs_sidebar dark:bg-dark-600">
                             {!! $index !!}
@@ -104,7 +104,7 @@
             <section class="flex-1 dark:bg-dark-700">
                 <div class="max-w-screen-lg px-8 sm:px-16 lg:px-24">
                     <div
-                        class="flex flex-col items-end border-b border-gray-200 py-1 transition-colors dark:border-gray-700 lg:mt-8 lg:flex-row-reverse">
+                            class="flex flex-col items-end border-b border-gray-200 py-1 transition-colors dark:border-gray-700 lg:mt-8 lg:flex-row-reverse">
                         @include('docs.partials.theme-switcher')
 
                         @include('docs.partials.version-switcher')
@@ -117,9 +117,9 @@
                             @unless ($currentVersion == 'master' || version_compare($currentVersion, $defaultVersion) >= 0)
                                 <blockquote>
                                     <div
-                                        class="mb-10 max-w-2xl mx-auto px-4 py-8 shadow-lg dark:bg-dark-600 lg:flex lg:items-center">
+                                            class="mb-10 max-w-2xl mx-auto px-4 py-8 shadow-lg dark:bg-dark-600 lg:flex lg:items-center">
                                         <div
-                                            class="w-20 h-20 mb-6 flex items-center justify-center shrink-0 bg-orange-600 lg:mb-0">
+                                                class="w-20 h-20 mb-6 flex items-center justify-center shrink-0 bg-orange-600 lg:mb-0">
                                             <img src="{{ asset('/img/callouts/exclamation.min.svg') }}" alt="Icon"
                                                  class="opacity-75"/>
                                         </div>
@@ -128,7 +128,7 @@
                                             <strong>WARNING</strong> You're browsing the documentation for an old
                                             version of <strong>{{ Str::upper($package) }}</strong>.
                                             Consider upgrading your project to <a
-                                                href="{{ route('docs.version', ['package' => $package, 'version' => $defaultVersion]) }}">{{ $package }} {{ $defaultVersion }}</a>.
+                                                    href="{{ route('docs.version', ['package' => $package, 'version' => $defaultVersion]) }}">{{ $package }} {{ $defaultVersion }}</a>.
                                         </p>
                                     </div>
                                 </blockquote>
@@ -138,9 +138,9 @@
                                 <blockquote>
                                     <div class="callout">
                                         <div
-                                            class="mb-10 max-w-2xl mx-auto px-4 py-8 shadow-lg lg:flex lg:items-center">
+                                                class="mb-10 max-w-2xl mx-auto px-4 py-8 shadow-lg lg:flex lg:items-center">
                                             <div
-                                                class="w-20 h-20 mb-6 flex items-center justify-center shrink-0 bg-orange-600 lg:mb-0">
+                                                    class="w-20 h-20 mb-6 flex items-center justify-center shrink-0 bg-orange-600 lg:mb-0">
                                                 <img src="{{ asset('/img/callouts/exclamation.min.svg') }}" alt="Icon"
                                                      class="opacity-75"/>
                                             </div>
@@ -173,14 +173,13 @@
                                                 </svg>
                                             </a>
                                         </div>
-
-
                                     </x-slot>
                                 @endif
 
+                                <x-ads ad-slot="6524198363"/>
+
                                 {!! $content !!}
 
-                                <x-ads ad-slot="6524198363"/>
                             </x-accessibility.main-content-wrapper>
                         </section>
                     </section>
