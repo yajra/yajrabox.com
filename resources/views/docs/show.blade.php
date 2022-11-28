@@ -156,6 +156,10 @@
                             @endif
 
                             <x-accessibility.main-content-wrapper>
+                                <div class="mb-4">
+                                    <x-ads ad-slot="6524198363"/>
+                                </div>
+
                                 @isset($repositoryLink)
                                     <x-slot name="editRepoLink">
                                         <div class="border-box">
@@ -175,8 +179,6 @@
                                         </div>
                                     </x-slot>
                                 @endif
-
-                                <x-ads ad-slot="6524198363"/>
 
                                 {!! $content !!}
 
