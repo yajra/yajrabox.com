@@ -13,6 +13,10 @@ if (! defined('DEFAULT_PACKAGE')) {
     define('DEFAULT_PACKAGE', 'laravel-datatables');
 }
 
+Route::domain('datatables.yajrabox.com')->get('/', function () {
+    return redirect('https://github.com/yajra/laravel-datatables-demo');
+});
+
 Route::get('/', function () {
     $repositories = [
         'laravel-datatables',
