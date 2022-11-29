@@ -164,10 +164,10 @@
 
                                 @isset($repositoryLink)
                                     <x-slot name="editRepoLink">
-                                        <div class="border-box">
+                                        <div class="border-box flex">
                                             <a title="Something wrong? You can edit the file and contribute."
                                                target="_blank"
-                                               class="btn-sm btn-group-item btn float-right flex justify-between dark:text-white text-sm items-center font-medium text-red-600"
+                                               class="btn-sm btn-group-item btn float-right flex justify-between dark:text-white text-sm items-center font-medium text-red-600 mt-10"
                                                href="{{$repositoryLink}}"
                                             >
                                                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1"
