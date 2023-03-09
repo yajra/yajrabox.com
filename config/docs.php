@@ -14,9 +14,10 @@ return [
         ],
 
         'laravel-acl' => [
-            'default' => '9.0',
+            'default' => '10.0',
             'versions' => [
                 'master' => 'Master',
+                '10.0' => '10.0',
                 '9.0' => '9.0',
                 '6.0' => '6.0',
                 '5.0' => '5.0',
