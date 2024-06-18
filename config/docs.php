@@ -27,9 +27,10 @@ return [
         ],
 
         'laravel-datatables' => [
-            'default' => '10.0',
+            'default' => '11.0',
             'versions' => [
                 'master' => 'Master',
+                '11.0' => '11.0',
                 '10.0' => '10.0',
                 '9.0' => '9.0',
                 '8.0' => '8.0',
