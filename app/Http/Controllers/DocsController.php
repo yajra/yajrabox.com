@@ -41,7 +41,7 @@ class DocsController extends Controller
     {
         $defaultVersion = Documentation::getDefaultVersion($package);
 
-        if (! $this->isVersion($package, $version)) {
+        if (is_null($version) || ! $this->isVersion($package, $version)) {
             return redirect("docs/$package/".$defaultVersion.'/'.$version, 301);
         }
 
@@ -52,7 +52,7 @@ class DocsController extends Controller
         $sectionPage = $page ?: 'installation';
         $content = $this->docs->get($package, $version, $sectionPage);
         if (empty($content)) {
-            $otherVersions = $this->docs->versionsContainingPage($package, $page);
+            $otherVersions = $this->docs->versionsContainingPage($package, $sectionPage);
 
             return response()->view('docs.show', [
                 'title' => 'Page not found',
@@ -95,7 +95,7 @@ class DocsController extends Controller
             'defaultVersion' => $defaultVersion,
             'versions' => Documentation::getDocVersions($package),
             'currentSection' => $section,
-            'canonical' => null,
+            'canonical' => $canonical,
             'repositoryLink' => Documentation::getRepositoryLink($package, $version, $sectionPage),
         ]);
     }
@@ -111,7 +111,7 @@ class DocsController extends Controller
     /**
      * Show the documentation index JSON representation.
      *
-     * @return array|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function index(string $package, string $version, Documentation $docs)
     {
@@ -128,7 +128,7 @@ class DocsController extends Controller
         }
 
         if ($major !== 'master' && $major < 9) {
-            return [];
+            return response()->json([]);
         }
 
         return response()->json($docs->indexArray($package, $version));

@@ -9,6 +9,7 @@ use League\CommonMark\Extension\Attributes\AttributesExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\MarkdownConverter;
 use Torchlight\Commonmark\V2\TorchlightExtension;
+
 use function assert;
 
 /**
@@ -24,19 +25,17 @@ class GithubFlavoredMarkdownConverter extends MarkdownConverter
     public function __construct(array $config = [])
     {
         $environment = new Environment($config);
-        $environment->addExtension(new CommonMarkCoreExtension());
-        $environment->addExtension(new GithubFlavoredMarkdownExtension());
-        $environment->addExtension(new AttributesExtension());
-        $environment->addExtension(new UnfencedExtension());
-        $environment->addExtension(new TorchlightExtension());
+        $environment->addExtension(new CommonMarkCoreExtension);
+        $environment->addExtension(new GithubFlavoredMarkdownExtension);
+        $environment->addExtension(new AttributesExtension);
+        $environment->addExtension(new UnfencedExtension);
+        $environment->addExtension(new TorchlightExtension);
 
         parent::__construct($environment);
     }
 
     public function getEnvironment(): EnvironmentInterface
     {
-        assert($this->environment instanceof EnvironmentInterface);
-
         return $this->environment;
     }
 }

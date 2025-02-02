@@ -7,6 +7,7 @@ use Carbon\CarbonInterval;
 use Illuminate\Contracts\Cache\Repository as Cache;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 use League\CommonMark\Output\RenderedContentInterface;
 
@@ -22,7 +23,7 @@ class Documentation
      */
     public static function getDefaultVersion(string $package): string
     {
-        return config('docs.packages.'.$package.'.default') ?? DEFAULT_VERSION;
+        return Config::string('docs.packages.'.$package.'.default', DEFAULT_VERSION);
     }
 
     /**
@@ -38,7 +39,12 @@ class Documentation
                     return '';
                 }
 
-                $content = $this->replaceLinks($package, $version, file_get_contents($path));
+                $content = file_get_contents($path);
+                if (! $content) {
+                    return '';
+                }
+
+                $content = $this->replaceLinks($package, $version, $content);
 
                 return $this->convertToMarkdown($content);
             }
@@ -105,7 +111,7 @@ class Documentation
 
                             return [
                                 (string) Str::of($path)->afterLast('/')->before('.md') => [
-                                    'title' => $page['title'],
+                                    'title' => $page['title'] ?? Config::string('app.name'),
                                     'sections' => collect($section['fragments'])
                                         ->combine($section['titles'])
                                         ->map(fn ($title) => ['title' => $title]),
@@ -129,7 +135,12 @@ class Documentation
                     return '';
                 }
 
-                $content = $this->replaceLinks($package, $version, file_get_contents($path));
+                $content = file_get_contents($path);
+                if (! $content) {
+                    return '';
+                }
+
+                $content = $this->replaceLinks($package, $version, $content);
 
                 return $this->convertToMarkdown($content);
             }
@@ -152,7 +163,7 @@ class Documentation
      */
     public static function getDocVersions(string $package): array
     {
-        return config('docs.packages.'.$package.'.versions') ?? [];
+        return Config::array('docs.packages.'.$package.'.versions', []);
     }
 
     /**
