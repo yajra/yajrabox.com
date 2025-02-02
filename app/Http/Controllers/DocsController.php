@@ -8,24 +8,14 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class DocsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @param  Documentation  $docs
-     * @return void
-     */
-    public function __construct(
-        protected Documentation $docs
-    ) {
-    }
+    public function __construct(protected Documentation $docs) {}
 
     /**
      * Show the root documentation page (/docs).
      *
-     * @param  string|null  $package
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function showRootPage(string $package = null)
+    public function showRootPage(?string $package = null)
     {
         $package = $package ?: DEFAULT_PACKAGE;
 
@@ -45,12 +35,9 @@ class DocsController extends Controller
     /**
      * Show a documentation page.
      *
-     * @param  string  $package
-     * @param  string|null  $version
-     * @param  string|null  $page
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function show(string $package, string $version = null, string $page = null)
+    public function show(string $package, ?string $version = null, ?string $page = null)
     {
         $defaultVersion = Documentation::getDefaultVersion($package);
 
@@ -115,10 +102,6 @@ class DocsController extends Controller
 
     /**
      * Determine if the given URL segment is a valid version.
-     *
-     * @param  string  $package
-     * @param  string  $version
-     * @return bool
      */
     protected function isVersion(string $package, string $version): bool
     {
@@ -128,9 +111,6 @@ class DocsController extends Controller
     /**
      * Show the documentation index JSON representation.
      *
-     * @param  string  $package
-     * @param  string  $version
-     * @param  \App\Documentation  $docs
      * @return array|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function index(string $package, string $version, Documentation $docs)

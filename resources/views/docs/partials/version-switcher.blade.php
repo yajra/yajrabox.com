@@ -1,13 +1,13 @@
 <div class="w-full lg:w-40 lg:pl-12">
     <div>
-        <label class="text-gray-600 text-xs tracking-widest uppercase dark:text-gray-500"
+        <label class="text-gray-600 text-xs tracking-widest uppercase"
                for="version-switcher">Version</label>
         <div x-data
-             class="relative w-full bg-white transition-all duration-500 focus-within:border-gray-600 dark:bg-gray-800">
+             class="relative w-full bg-white transition-all duration-500 focus-within:border-gray-600">
             <select
                     id="version-switcher"
                     aria-label="Laravel version"
-                    class="appearance-none flex-1 w-full px-0 py-1 placeholder-gray-900 tracking-wide bg-white focus:outline-none dark:bg-dark-700 dark:text-gray-400 dark:placeholder-gray-500"
+                    class="appearance-none flex-1 w-full px-0 py-1 placeholder-gray-900 tracking-wide bg-white focus:outline-none"
                     @change="window.location = $event.target.value"
             >
                 @foreach ($versions as $key => $display)
