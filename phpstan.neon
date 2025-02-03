@@ -6,7 +6,11 @@ parameters:
 
     paths:
         - app/
+        - bootstrap/
+        - config/
+        - database/
         - public/index.php
+        - routes/
 
     # Level 10 is the highest level
     level: 9
