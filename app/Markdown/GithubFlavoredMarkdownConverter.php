@@ -10,8 +10,6 @@ use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\MarkdownConverter;
 use Torchlight\Commonmark\V2\TorchlightExtension;
 
-use function assert;
-
 /**
  * Converts GitHub Flavored Markdown to HTML.
  */

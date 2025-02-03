@@ -59,9 +59,9 @@ Route::get('/', function () {
             $project['section'] = '/'.($section ?? '');
 
             $project['doc_url'] = route('docs.version', [
-                    'package' => $projectName,
-                    'version' => Documentation::getDefaultVersion($projectName),
-                ]).$project['section'];
+                'package' => $projectName,
+                'version' => Documentation::getDefaultVersion($projectName),
+            ]).$project['section'];
 
             return $project;
         })

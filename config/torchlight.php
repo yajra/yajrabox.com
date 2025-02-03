@@ -28,7 +28,7 @@ return [
     // block, Torchlight will look for code snippets in the
     // following directories.
     'snippet_directories' => [
-        resource_path()
+        resource_path(),
     ],
 
     // Global options to control blocks-level settings.
