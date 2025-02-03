@@ -4,6 +4,14 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
+if (! defined('DEFAULT_VERSION')) {
+    define('DEFAULT_VERSION', 'master');
+}
+
+if (! defined('DEFAULT_PACKAGE')) {
+    define('DEFAULT_PACKAGE', 'laravel-datatables');
+}
+
 // Determine if the application is in maintenance mode...
 if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
     require $maintenance;
