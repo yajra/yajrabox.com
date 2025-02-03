@@ -101,7 +101,7 @@
             </header>
 
             {{-- Main Content --}}
-            <section class="flex-1 dark:bg-dark-600" id="main-content">
+            <section class="flex-1" id="main-content">
                 <div class="max-w-screen-lg px-8 sm:px-16 lg:px-24">
                     <div
                             class="flex flex-col items-end border-b border-gray-200 py-1 transition-colors lg:mt-8 lg:flex-row-reverse">
