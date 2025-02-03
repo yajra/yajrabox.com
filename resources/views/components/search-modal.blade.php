@@ -25,7 +25,7 @@
         :aria-labelledby="$id('search-modal')"
         class="fixed inset-0 z-50 text-gray-400 overflow-y-auto"
 >
-    <div x-show="open" x-transition.opacity class="fixed inset-0 bg-dark-900 bg-opacity-80"></div>
+    <div x-show="open" x-transition.opacity class="fixed inset-0 bg-dark-900 opacity-80"></div>
 
     <div
             x-show="open"

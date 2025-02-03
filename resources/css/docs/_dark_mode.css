@@ -79,7 +79,7 @@ html.dark {
     #footer__github_dark,
     #footer__discord_dark,
     #footer__youtube_dark {
-        display: block;
+        @apply dark:hidden;
     }
 }
 
