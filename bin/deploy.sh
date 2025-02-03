@@ -8,6 +8,7 @@ fi
 git pull
 composer install
 php artisan optimize
+php artisan sitemap:generate
 npm ci
 npm run build
 source "$(dirname "$0")/checkout_latest_docs.sh"

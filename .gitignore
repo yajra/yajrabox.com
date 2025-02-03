@@ -22,3 +22,4 @@ yarn-error.log
 /.vscode
 /.zed
 /resources/docs
+/public/sitemap*
