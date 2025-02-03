@@ -14,10 +14,10 @@
                     <option {{ $currentVersion == $key ? 'selected' : '' }} value="{{ url('docs/'.$package.'/'.$key.$currentSection) }}">{{ $display }}</option>
                 @endforeach
             </select>
-            <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none"
-                 id="docs_search__version_arrow" src="{{ asset('img/icons/drop_arrow.min.svg') }}" alt="">
-            <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none"
-                 id="docs_search__version_arrow_dark" src="{{ asset('img/icons/drop_arrow.dark.min.svg') }}"
+            <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none dark:hidden"
+                 src="{{ asset('img/icons/drop_arrow.min.svg') }}" alt="">
+            <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none dark:block"
+                 src="{{ asset('img/icons/drop_arrow.dark.min.svg') }}"
                  alt="">
         </div>
     </div>
