@@ -8,24 +8,14 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class DocsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @param  Documentation  $docs
-     * @return void
-     */
-    public function __construct(
-        protected Documentation $docs
-    ) {
-    }
+    public function __construct(protected Documentation $docs) {}
 
     /**
      * Show the root documentation page (/docs).
      *
-     * @param  string|null  $package
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function showRootPage(string $package = null)
+    public function showRootPage(?string $package = null)
     {
         $package = $package ?: DEFAULT_PACKAGE;
 
@@ -45,16 +35,13 @@ class DocsController extends Controller
     /**
      * Show a documentation page.
      *
-     * @param  string  $package
-     * @param  string|null  $version
-     * @param  string|null  $page
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function show(string $package, string $version = null, string $page = null)
+    public function show(string $package, ?string $version = null, ?string $page = null)
     {
         $defaultVersion = Documentation::getDefaultVersion($package);
 
-        if (! $this->isVersion($package, $version)) {
+        if (is_null($version) || ! $this->isVersion($package, $version)) {
             return redirect("docs/$package/".$defaultVersion.'/'.$version, 301);
         }
 
@@ -65,7 +52,7 @@ class DocsController extends Controller
         $sectionPage = $page ?: 'installation';
         $content = $this->docs->get($package, $version, $sectionPage);
         if (empty($content)) {
-            $otherVersions = $this->docs->versionsContainingPage($package, $page);
+            $otherVersions = $this->docs->versionsContainingPage($package, $sectionPage);
 
             return response()->view('docs.show', [
                 'title' => 'Page not found',
@@ -108,17 +95,13 @@ class DocsController extends Controller
             'defaultVersion' => $defaultVersion,
             'versions' => Documentation::getDocVersions($package),
             'currentSection' => $section,
-            'canonical' => null,
+            'canonical' => $canonical,
             'repositoryLink' => Documentation::getRepositoryLink($package, $version, $sectionPage),
         ]);
     }
 
     /**
      * Determine if the given URL segment is a valid version.
-     *
-     * @param  string  $package
-     * @param  string  $version
-     * @return bool
      */
     protected function isVersion(string $package, string $version): bool
     {
@@ -128,10 +111,7 @@ class DocsController extends Controller
     /**
      * Show the documentation index JSON representation.
      *
-     * @param  string  $package
-     * @param  string  $version
-     * @param  \App\Documentation  $docs
-     * @return array|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function index(string $package, string $version, Documentation $docs)
     {
@@ -148,7 +128,7 @@ class DocsController extends Controller
         }
 
         if ($major !== 'master' && $major < 9) {
-            return [];
+            return response()->json([]);
         }
 
         return response()->json($docs->indexArray($package, $version));

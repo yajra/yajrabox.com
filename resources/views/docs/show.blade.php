@@ -6,7 +6,7 @@
 @section('content')
     <x-accessibility.skip-to-content-link/>
 
-    <div class="relative overflow-auto dark:bg-dark-700" id="docsScreen">
+    <div class="relative overflow-auto dark:bg-dark-700 dark:text-gray-300" id="docsScreen">
 
         <div class="relative lg:flex lg:items-start">
             @include('docs.partials.sidebar')
@@ -17,14 +17,14 @@
                     @keydown.window.escape="navIsOpen = false"
                     @click.away="navIsOpen = false"
             >
-                <div class="relative mx-auto w-full py-10 bg-white transition duration-200 dark:bg-dark-700">
+                <div class="relative mx-auto w-full py-10 bg-white transition duration-200">
                     <div class="mx-auto px-8 sm:px-16 flex items-center justify-between">
                         <a href="/" class="flex items-center">
                             <img class="" width="50" height="50" src="{{ asset('img/logomark.min.svg') }}"
                                  alt="{{ config('app.name') }}">
                             <img class="hidden ml-5 sm:block" height="29" width="114"
                                  src="{{ asset('img/logotype.min.svg') }}" alt="{{ config('app.name') }}">
-                            <h3 class="font-bold ml-5 text-2xl dark:text-gray-400">{{ package_to_title($package) }}</h3>
+                            <h3 class="font-bold ml-5 text-2xl">{{ package_to_title($package) }}</h3>
                         </a>
                         <div class="flex-1 flex items-center justify-end">
                             <button id="header__sun" onclick="toSystemMode()" title="Switch to system theme"
@@ -93,7 +93,7 @@
                             x-transition:leave-start="opacity-100 scale-100"
                             x-transition:leave-end="opacity-0 -translate-y-8 scale-75"
                     >
-                        <div class="relative p-8 bg-white docs_sidebar dark:bg-dark-600">
+                        <div class="relative p-8 bg-white docs_sidebar">
                             {!! $index !!}
                         </div>
                     </nav>
@@ -101,10 +101,10 @@
             </header>
 
             {{-- Main Content --}}
-            <section class="flex-1 dark:bg-dark-700">
+            <section class="flex-1" id="main-content">
                 <div class="max-w-screen-lg px-8 sm:px-16 lg:px-24">
                     <div
-                            class="flex flex-col items-end border-b border-gray-200 py-1 transition-colors dark:border-gray-700 lg:mt-8 lg:flex-row-reverse">
+                            class="flex flex-col items-end border-b border-gray-200 py-1 transition-colors lg:mt-8 lg:flex-row-reverse">
                         @include('docs.partials.theme-switcher')
 
                         @include('docs.partials.version-switcher')
@@ -117,7 +117,7 @@
                             @unless ($currentVersion == 'master' || version_compare($currentVersion, $defaultVersion) >= 0)
                                 <blockquote>
                                     <div
-                                            class="mb-10 max-w-2xl mx-auto px-4 py-8 shadow-lg dark:bg-dark-600 lg:flex lg:items-center">
+                                            class="mb-10 max-w-2xl mx-auto px-4 py-8 shadow-lg lg:flex lg:items-center">
                                         <div
                                                 class="w-20 h-20 mb-6 flex items-center justify-center shrink-0 bg-orange-600 lg:mb-0">
                                             <img src="{{ asset('/img/callouts/exclamation.min.svg') }}" alt="Icon"
@@ -167,7 +167,7 @@
                                         <div class="border-box flex">
                                             <a title="Something wrong? You can edit the file and contribute."
                                                target="_blank"
-                                               class="btn-sm btn-group-item btn float-right flex justify-between dark:text-white text-sm items-center font-medium text-red-600 mt-10"
+                                               class="btn-sm btn-group-item btn float-right flex justify-between text-sm items-center font-medium text-red-600 mt-10"
                                                href="{{$repositoryLink}}"
                                             >
                                                 <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1"

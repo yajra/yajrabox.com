@@ -14,14 +14,14 @@
                 <ul class="mt-6 flex justify-center items-center space-x-3">
                     <li>
                         <a href="https://twitter.com/aqangeles">
-                            <img id="footer__twitter_dark" class="{{ $is_docs_page ? 'hidden dark:inline-block' : 'hidden' }} w-6 h-6" src="{{ asset('img/social/twitter.dark.min.svg') }}" alt="Twitter" width="24" height="20" loading="lazy">
-                            <img id="footer__twitter" class="{{ $is_docs_page ? 'inline-block dark:hidden' : 'inline-block' }} w-6 h-6" src="{{ asset('img/social/twitter.min.svg') }}" alt="Twitter" width="24" height="20" loading="lazy">
+                            <img id="footer__twitter_dark" class="{{ $is_docs_page ? 'hidden' : 'hidden' }} w-6 h-6" src="{{ asset('img/social/twitter.dark.min.svg') }}" alt="Twitter" width="24" height="20" loading="lazy">
+                            <img id="footer__twitter" class="{{ $is_docs_page ? 'inline-block' : 'inline-block' }} w-6 h-6" src="{{ asset('img/social/twitter.min.svg') }}" alt="Twitter" width="24" height="20" loading="lazy">
                         </a>
                     </li>
                     <li>
                         <a href="https://github.com/yajra">
-                            <img id="footer__github_dark" class="{{ $is_docs_page ? 'hidden dark:inline-block' : 'hidden' }} w-6 h-6" src="{{ asset('img/social/github.dark.min.svg') }}" alt="GitHub" width="24" height="24" loading="lazy">
-                            <img id="footer__github" class="{{ $is_docs_page ? 'inline-block dark:hidden' : 'inline-block' }} w-6 h-6" src="{{ asset('img/social/github.min.svg') }}" alt="GitHub" width="24" height="24" loading="lazy">
+                            <img id="footer__github_dark" class="{{ $is_docs_page ? 'hidden' : 'hidden' }} w-6 h-6" src="{{ asset('img/social/github.dark.min.svg') }}" alt="GitHub" width="24" height="24" loading="lazy">
+                            <img id="footer__github" class="{{ $is_docs_page ? 'inline-block' : 'inline-block' }} w-6 h-6" src="{{ asset('img/social/github.min.svg') }}" alt="GitHub" width="24" height="24" loading="lazy">
                         </a>
                     </li>
                 </ul>

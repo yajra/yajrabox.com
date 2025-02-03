@@ -8,9 +8,6 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/css/docs.css'])
-
-    <!-- Styles -->
-    @livewireStyles
 </head>
 <body x-data="{navIsOpen: false, searchIsOpen: false, search: ''}"
       class="language-php h-full w-full font-sans text-gray-900 antialiased"

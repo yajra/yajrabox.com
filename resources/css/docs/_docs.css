@@ -132,7 +132,7 @@
                 position: absolute;
                 top: .40em; left: 0;
                 width: 9px; height: 10px;
-                background: url(/img/icons/ul_marker.min.svg) no-repeat center;
+                background: url('/img/icons/ul_marker.min.svg') no-repeat center;
                 background-size: contain;
             }
         }

@@ -7,8 +7,7 @@ fi
 
 git pull
 composer install
-php artisan config:cache
-php artisan route:cache
-#npm ci
-#npm run build
+php artisan optimize
+npm ci
+npm run build
 source "$(dirname "$0")/checkout_latest_docs.sh"

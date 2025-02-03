@@ -2,39 +2,46 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
-        "php": "^8.1",
-        "graham-campbell/github": "^11.0",
-        "guzzlehttp/guzzle": "^7.5",
-        "laravel/framework": "^9.52.4",
-        "laravel/jetstream": "^2.16.2",
-        "laravel/sanctum": "^3.2.1",
-        "laravel/tinker": "^2.8.1",
+        "php": "^8.3",
+        "graham-campbell/github": "^12.6",
+        "guzzlehttp/guzzle": "^7.9.2",
+        "laravel/framework": "^11.41.3",
+        "laravel/tinker": "^2.10.1",
         "laravel/unfenced": "dev-main",
-        "livewire/livewire": "^2.12.3",
-        "spatie/laravel-sitemap": "^6.2.5",
-        "symfony/browser-kit": "^6.2.7",
-        "torchlight/torchlight-commonmark": "^0.5.5",
-        "torchlight/torchlight-laravel": "^0.5.13"
+        "livewire/livewire": "^3.5.19",
+        "spatie/laravel-sitemap": "^7.3.4",
+        "symfony/browser-kit": "^7.2",
+        "torchlight/torchlight-commonmark": "dev-main",
+        "torchlight/torchlight-laravel": "^0.6"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.21.0",
-        "laravel/pint": "^1.6",
-        "laravel/sail": "^1.21.2",
-        "mockery/mockery": "^1.5.1",
-        "nunomaduro/collision": "^6.4",
-        "phpunit/phpunit": "^9.6.5",
-        "spatie/laravel-ignition": "^1.6.4"
+        "fakerphp/faker": "^1.24.1",
+        "larastan/larastan": "^3.0.2",
+        "laravel/pint": "^1.20",
+        "mockery/mockery": "^1.7",
+        "nunomaduro/collision": "^8.6.1",
+        "phpunit/phpunit": "^11.5.6"
     },
     "repositories": [
         {
             "type": "vcs",
-            "url":  "git@github.com:laravel-labs/unfenced.git"
+            "url": "git@github.com:laravel-labs/unfenced.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/caendesilva/torchlight-commonmark-php"
         }
     ],
     "autoload": {
+        "files": [
+            "bootstrap/helpers.php"
+        ],
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",

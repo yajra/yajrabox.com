@@ -23,7 +23,7 @@ export default function () {
                 index.search(query, {
                     hitsPerPage: 5,
                     facetFilters: ['version: ' + window.version, 'package: ' + window.package],
-                    highlightPreTag: '<em class="not-italic bg-red-600 bg-opacity-25">',
+                    highlightPreTag: '<em class="not-italic bg-red-600 opacity-25">',
                     highlightPostTag: '</em>'
                 }).then(({hits}) => {
                     this.searching = false

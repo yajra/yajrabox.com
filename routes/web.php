@@ -5,14 +5,6 @@ use App\Http\Controllers\DocsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
-if (! defined('DEFAULT_VERSION')) {
-    define('DEFAULT_VERSION', 'master');
-}
-
-if (! defined('DEFAULT_PACKAGE')) {
-    define('DEFAULT_PACKAGE', 'laravel-datatables');
-}
-
 Route::domain('datatables.yajrabox.com')->get('/', function () {
     return redirect('https://github.com/yajra/laravel-datatables-demo');
 });

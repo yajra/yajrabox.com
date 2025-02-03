@@ -48,7 +48,7 @@ pre code.torchlight {
     min-width: max-content;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    @apply bg-dark-600 !important;
+    @apply bg-dark-600;
 }
 
 pre code.torchlight .line {
