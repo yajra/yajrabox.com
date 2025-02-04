@@ -44,3 +44,4 @@ if (! function_exists('package_to_title')) {
         return $title;
     }
 }
+
