@@ -2,6 +2,7 @@
 
 DATATABLES=(
   master
+  12.0
   11.0
   10.0
   9.0
