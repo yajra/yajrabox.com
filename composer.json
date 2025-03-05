@@ -66,6 +66,9 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "docs": [
+            "./bin/checkout_latest_docs.sh"
         ]
     },
     "extra": {
