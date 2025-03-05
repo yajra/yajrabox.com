@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
-        "graham-campbell/github": "^12.6",
+        "graham-campbell/github": "^13.0",
         "guzzlehttp/guzzle": "^7.9.2",
         "laravel/framework": "^11.41.3",
         "laravel/tinker": "^2.10.1",
