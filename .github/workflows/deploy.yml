@@ -17,4 +17,5 @@ jobs:
           script: |
             cd /var/www/yajrabox.com
             ./bin/deploy.sh
+            php artisan optimize
             echo 'Deployment successful'
