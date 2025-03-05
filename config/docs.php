@@ -4,9 +4,10 @@ return [
     'username' => 'yajra',
     'packages' => [
         'laravel-auditable' => [
-            'default' => '11.0',
+            'default' => '12.0',
             'versions' => [
                 'master' => 'Master',
+                '12.0' => '12.0',
                 '11.0' => '11.0',
                 '4.0' => '4.0',
                 '3.0' => '3.0',
