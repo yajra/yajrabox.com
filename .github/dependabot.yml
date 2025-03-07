@@ -20,7 +20,8 @@ updates:
           - "patch"
           - "minor"
     ignore:
-      update-types: ["version-update:semver-major"]
+      update-types:
+        - "version-update:semver-major"
 
   - package-ecosystem: "npm"
     directory: "/"
@@ -37,4 +38,5 @@ updates:
           - "patch"
           - "minor"
     ignore:
-      update-types: ["version-update:semver-major"]
+      update-types:
+        - "version-update:semver-major"
