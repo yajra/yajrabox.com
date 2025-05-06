@@ -51,13 +51,15 @@ class GenerateSitemap extends Command
             ->add('sitemap_pages.xml');
 
         foreach (Config::array('docs.packages') as $package => $options) {
-            SitemapGenerator::create($appUrl.'/docs/'.$package)
-                ->shouldCrawl(function (UriInterface $url) {
-                    return Str::contains($url->getPath(), 'docs');
-                })
-                ->writeToFile(public_path('sitemap_'.$package.'.xml'));
+            foreach ($options['versions'] as $version => $versionOptions) {
+                SitemapGenerator::create($appUrl.'/docs/'.$package.'/'.$version)
+                    ->shouldCrawl(function (UriInterface $url) {
+                        return Str::contains($url->getPath(), 'docs');
+                    })
+                    ->writeToFile(public_path('sitemap_'.$package.'_'.$version.'.xml'));
 
-            $sitemapIndex->add('sitemap_'.$package.'.xml');
+                $sitemapIndex->add('sitemap_'.$package.'_'.$version.'.xml');
+            }
         }
 
         $sitemapIndex->writeToFile(public_path('sitemap.xml'));
