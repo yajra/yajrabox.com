@@ -82,9 +82,9 @@ class DocsController extends Controller
 
         $canonical = null;
 
-        if ($this->docs->pageExists($package, $defaultVersion, $sectionPage)) {
-            $canonical = "docs/$package/".$defaultVersion.'/'.$sectionPage;
-        }
+        //        if ($this->docs->pageExists($package, $defaultVersion, $sectionPage)) {
+        //             $canonical = "docs/$package/".$defaultVersion.'/'.$sectionPage;
+        //        }
 
         return view('docs.show', [
             'title' => count($title) ? $title->text() : null,
