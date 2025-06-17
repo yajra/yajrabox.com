@@ -12,6 +12,7 @@
         "graham-campbell/github": "^13.0",
         "guzzlehttp/guzzle": "^7.9.2",
         "laravel/framework": "^11.41.3",
+        "laravel/nightwatch": "^1.7",
         "laravel/tinker": "^2.10.1",
         "laravel/unfenced": "dev-main",
         "livewire/livewire": "^3.5.19",
