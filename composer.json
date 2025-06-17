@@ -10,24 +10,24 @@
     "require": {
         "php": "^8.3",
         "graham-campbell/github": "^13.0",
-        "guzzlehttp/guzzle": "^7.9.2",
-        "laravel/framework": "^11.41.3",
-        "laravel/nightwatch": "^1.7",
+        "guzzlehttp/guzzle": "^7.9.3",
+        "laravel/framework": "^12.18",
+        "laravel/nightwatch": "^1.7.1",
         "laravel/tinker": "^2.10.1",
         "laravel/unfenced": "dev-main",
-        "livewire/livewire": "^3.5.19",
-        "spatie/laravel-sitemap": "^7.3.4",
-        "symfony/browser-kit": "^7.2",
+        "livewire/livewire": "^3.6.3",
+        "spatie/laravel-sitemap": "^7.3.6",
+        "symfony/browser-kit": "^7.3",
         "torchlight/torchlight-commonmark": "dev-main",
-        "torchlight/torchlight-laravel": "^0.6"
+        "torchlight/torchlight-laravel": "^0.6.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.24.1",
-        "larastan/larastan": "^3.0.2",
-        "laravel/pint": "^1.20",
+        "larastan/larastan": "^3.4.2",
+        "laravel/pint": "^1.22.1",
         "mockery/mockery": "^1.7",
-        "nunomaduro/collision": "^8.6.1",
-        "phpunit/phpunit": "^11.5.6"
+        "nunomaduro/collision": "^8.8.1",
+        "phpunit/phpunit": "^11.5.23"
     },
     "repositories": [
         {
