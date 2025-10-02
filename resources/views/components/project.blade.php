@@ -3,7 +3,7 @@
         <h3 class="text-xl font-bold">{{ package_to_title($project['name']) }}</h3>
     </a>
 
-    <p class="flex-1 mt-2 text-gray-700">
+    <p class="mt-2 text-gray-700">
         {{ $project['description'] }}
     </p>
 
@@ -48,7 +48,7 @@
         </a>
     </div>
 
-    <ul class="flex items-center space-x-2 mt-4">
+    <ul class="flex flex-wrap items-center space-x-2 mt-4">
         @foreach($project['versions'] as $version)
             @if($loop->first)
                 <li class="text-xs">Doc Versions:</li>
