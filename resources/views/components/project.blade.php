@@ -1,4 +1,4 @@
-<blockquote class="relative flex flex-col w-full bg-white p-5 border border-gray-200 break-inside-avoid-column">
+<blockquote class="rounded-lg shadow-sm relative flex flex-col w-full bg-white p-5 border border-gray-200 break-inside-avoid-column">
     <a href="{{ $project['doc_url'] }}" class="text-blue-800 hover:text-blue-500">
         <h3 class="text-xl font-bold">{{ package_to_title($project['name']) }}</h3>
     </a>
@@ -9,7 +9,7 @@
 
     <div class="mt-5 flex items-start gap-4">
         <img src="{{ $project['owner']['avatar_url'] }}"
-             class="w-10 h-10 object-cover object-center"
+             class="rounded-full w-10 h-10 object-cover object-center"
              alt="{{ $project['full_name'] }}">
 
         <a href="{{ $project['html_url'] }}" class="text-xs">
