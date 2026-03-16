@@ -8042,32 +8042,32 @@
         },
         {
             "name": "torchlight/torchlight-laravel",
-            "version": "v0.6.1",
+            "version": "v0.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/torchlight-api/torchlight-laravel.git",
-                "reference": "5670af34e9637761c89687848b8bd71e043d6819"
+                "reference": "cdda237839a2a4053f186ae50cdcc691d76cb626"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/torchlight-api/torchlight-laravel/zipball/5670af34e9637761c89687848b8bd71e043d6819",
-                "reference": "5670af34e9637761c89687848b8bd71e043d6819",
+                "url": "https://api.github.com/repos/torchlight-api/torchlight-laravel/zipball/cdda237839a2a4053f186ae50cdcc691d76cb626",
+                "reference": "cdda237839a2a4053f186ae50cdcc691d76cb626",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^7.2",
-                "illuminate/cache": "^8.0|^9.0|^10.0|^11.0|^12.0",
-                "illuminate/console": "^8.0|^9.0|^10.0|^11.0|^12.0",
-                "illuminate/http": "^8.0|^9.0|^10.0|^11.0|^12.0",
-                "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0",
-                "illuminate/view": "^8.0|^9.0|^10.0|^11.0|^12.0",
+                "illuminate/cache": "^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/console": "^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/http": "^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/view": "^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
                 "php": "^7.3|^8.0",
                 "ramsey/uuid": "^3.7|^4.0"
             },
             "require-dev": {
                 "mockery/mockery": "^1.3.3",
-                "orchestra/testbench": "^5.0|^6.0|^7.0|^9.0|^10.0",
-                "phpunit/phpunit": "^8.5.23|^9.5|^10.5|^11.5.3"
+                "orchestra/testbench": "^5.0|^6.0|^7.0|^9.16|^10.0|^11.0",
+                "phpunit/phpunit": "^8.5.23|^9.5|^10.5|^11.5.3|^12.5.12"
             },
             "type": "library",
             "extra": {
@@ -8101,9 +8101,9 @@
             ],
             "support": {
                 "issues": "https://github.com/torchlight-api/torchlight-laravel/issues",
-                "source": "https://github.com/torchlight-api/torchlight-laravel/tree/v0.6.1"
+                "source": "https://github.com/torchlight-api/torchlight-laravel/tree/v0.6.2"
             },
-            "time": "2025-03-22T15:38:26+00:00"
+            "time": "2026-03-15T20:45:02+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
