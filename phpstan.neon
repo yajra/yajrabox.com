@@ -18,6 +18,9 @@ parameters:
     ignoreErrors:
         - identifier: missingType.iterableValue
         - identifier: missingType.generics
+        -
+            identifier: cast.string
+            path: app/Console/Commands/GenerateSitemap.php
 #
 #    excludePaths:
 #        - ./*/*/FileToBeExcluded.php

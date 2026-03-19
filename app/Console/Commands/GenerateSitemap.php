@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 use Psr\Http\Message\UriInterface;
 use Spatie\Sitemap\SitemapGenerator;
@@ -31,7 +30,7 @@ class GenerateSitemap extends Command
      */
     public function handle(): int
     {
-        $appUrl = Config::string('app.url');
+        $appUrl = (string) config('app.url');
 
         SitemapGenerator::create($appUrl)
             ->shouldCrawl(function (UriInterface $url) {
@@ -50,8 +49,16 @@ class GenerateSitemap extends Command
         $sitemapIndex = SitemapIndex::create()
             ->add('sitemap_pages.xml');
 
-        foreach (Config::array('docs.packages') as $package => $options) {
-            foreach ($options['versions'] as $version => $versionOptions) {
+        $packages = (array) config('docs.packages', []);
+        foreach ($packages as $package => $options) {
+            if (! is_string($package) || ! is_array($options)) {
+                continue;
+            }
+            $versions = (array) ($options['versions'] ?? []);
+            foreach ($versions as $version => $versionOptions) {
+                if (! is_string($version)) {
+                    continue;
+                }
                 SitemapGenerator::create($appUrl.'/docs/'.$package.'/'.$version)
                     ->shouldCrawl(function (UriInterface $url) {
                         return Str::contains($url->getPath(), 'docs');

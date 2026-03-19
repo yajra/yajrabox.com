@@ -3,12 +3,9 @@
 namespace Tests\Unit\Documentation;
 
 use App\Documentation\Frontmatter;
-use PHPUnit\Framework\TestCase;
 
-class FrontmatterTest extends TestCase
-{
-    public function test_parses_yaml_frontmatter(): void
-    {
+describe('Frontmatter', function () {
+    it('parses yaml frontmatter', function () {
         $markdown = <<<'MD'
 ---
 title: Test Page Title
@@ -22,15 +19,14 @@ MD;
 
         $frontmatter = Frontmatter::parse($markdown);
 
-        $this->assertTrue($frontmatter->hasFrontmatter());
-        $this->assertEquals('Test Page Title', $frontmatter->getTitle());
-        $this->assertEquals('A test description', $frontmatter->getDescription());
-        $this->assertStringStartsWith('# Content Here', $frontmatter->getContent());
-        $this->assertStringContainsString('Some markdown content.', $frontmatter->getContent());
-    }
+        expect($frontmatter->hasFrontmatter())->toBeTrue()
+            ->and($frontmatter->getTitle())->toBe('Test Page Title')
+            ->and($frontmatter->getDescription())->toBe('A test description')
+            ->and($frontmatter->getContent())->toStartWith('# Content Here')
+            ->and($frontmatter->getContent())->toContain('Some markdown content.');
+    });
 
-    public function test_handles_content_without_frontmatter(): void
-    {
+    it('handles content without frontmatter', function () {
         $markdown = <<<'MD'
 # Just a Title
 
@@ -39,15 +35,14 @@ MD;
 
         $frontmatter = Frontmatter::parse($markdown);
 
-        $this->assertFalse($frontmatter->hasFrontmatter());
-        $this->assertNull($frontmatter->getTitle());
-        $this->assertNull($frontmatter->getDescription());
-        $this->assertEquals($markdown, $frontmatter->getContent());
-        $this->assertEquals([], $frontmatter->all());
-    }
+        expect($frontmatter->hasFrontmatter())->toBeFalse()
+            ->and($frontmatter->getTitle())->toBeNull()
+            ->and($frontmatter->getDescription())->toBeNull()
+            ->and($frontmatter->getContent())->toBe($markdown)
+            ->and($frontmatter->all())->toBe([]);
+    });
 
-    public function test_handles_empty_frontmatter(): void
-    {
+    it('handles empty frontmatter', function () {
         $markdown = <<<'MD'
 ---
 ---
@@ -57,12 +52,10 @@ MD;
 
         $frontmatter = Frontmatter::parse($markdown);
 
-        // Empty frontmatter should still parse but not set hasFrontmatter
-        $this->assertEquals('# Content', $frontmatter->getContent());
-    }
+        expect($frontmatter->getContent())->toBe('# Content');
+    });
 
-    public function test_get_custom_attribute(): void
-    {
+    it('gets custom attribute', function () {
         $markdown = <<<'MD'
 ---
 title: Custom Page
@@ -76,13 +69,12 @@ MD;
 
         $frontmatter = Frontmatter::parse($markdown);
 
-        $this->assertEquals('getting-started', $frontmatter->get('category'));
-        $this->assertEquals(1, $frontmatter->get('order'));
-        $this->assertEquals('default', $frontmatter->get('nonexistent', 'default'));
-    }
+        expect($frontmatter->get('category'))->toBe('getting-started')
+            ->and($frontmatter->get('order'))->toBe(1)
+            ->and($frontmatter->get('nonexistent', 'default'))->toBe('default');
+    });
 
-    public function test_to_collection(): void
-    {
+    it('converts to collection', function () {
         $markdown = <<<'MD'
 ---
 title: Test
@@ -94,11 +86,10 @@ MD;
         $frontmatter = Frontmatter::parse($markdown);
         $collection = $frontmatter->toCollection();
 
-        $this->assertEquals('Test', $collection->get('title'));
-    }
+        expect($collection->get('title'))->toBe('Test');
+    });
 
-    public function test_has_method(): void
-    {
+    it('has method works correctly', function () {
         $markdown = <<<'MD'
 ---
 title: Test
@@ -109,13 +100,12 @@ MD;
 
         $frontmatter = Frontmatter::parse($markdown);
 
-        $this->assertTrue($frontmatter->has('title'));
-        $this->assertFalse($frontmatter->has('nonexistent'));
-        $this->assertFalse($frontmatter->has('description'));
-    }
+        expect($frontmatter->has('title'))->toBeTrue()
+            ->and($frontmatter->has('nonexistent'))->toBeFalse()
+            ->and($frontmatter->has('description'))->toBeFalse();
+    });
 
-    public function test_magic_getter(): void
-    {
+    it('magic getter works', function () {
         $markdown = <<<'MD'
 ---
 title: Magic Test
@@ -127,13 +117,12 @@ MD;
 
         $frontmatter = Frontmatter::parse($markdown);
 
-        $this->assertEquals('Magic Test', $frontmatter->title);
-        $this->assertEquals('test-category', $frontmatter->category);
-        $this->assertNull($frontmatter->nonexistent);
-    }
+        expect($frontmatter->title)->toBe('Magic Test')
+            ->and($frontmatter->category)->toBe('test-category')
+            ->and($frontmatter->nonexistent)->toBeNull();
+    });
 
-    public function test_magic_isset(): void
-    {
+    it('magic isset works', function () {
         $markdown = <<<'MD'
 ---
 title: Magic Test
@@ -144,12 +133,11 @@ MD;
 
         $frontmatter = Frontmatter::parse($markdown);
 
-        $this->assertTrue(isset($frontmatter->title));
-        $this->assertFalse(isset($frontmatter->nonexistent));
-    }
+        expect(isset($frontmatter->title))->toBeTrue()
+            ->and(isset($frontmatter->nonexistent))->toBeFalse();
+    });
 
-    public function test_all_returns_data_array(): void
-    {
+    it('all returns data array', function () {
         $markdown = <<<'MD'
 ---
 title: Full Test
@@ -163,14 +151,11 @@ MD;
         $frontmatter = Frontmatter::parse($markdown);
         $all = $frontmatter->all();
 
-        $this->assertIsArray($all);
-        $this->assertArrayHasKey('title', $all);
-        $this->assertArrayHasKey('description', $all);
-        $this->assertArrayHasKey('category', $all);
-    }
+        expect($all)->toBeArray()
+            ->toHaveKeys(['title', 'description', 'category']);
+    });
 
-    public function test_quoted_string_values(): void
-    {
+    it('parses quoted string values', function () {
         $markdown = <<<'MD'
 ---
 title: "Quoted Title"
@@ -182,12 +167,11 @@ MD;
 
         $frontmatter = Frontmatter::parse($markdown);
 
-        $this->assertEquals('Quoted Title', $frontmatter->getTitle());
-        $this->assertEquals('Single Quoted', $frontmatter->getDescription());
-    }
+        expect($frontmatter->getTitle())->toBe('Quoted Title')
+            ->and($frontmatter->getDescription())->toBe('Single Quoted');
+    });
 
-    public function test_multiline_content_without_frontmatter(): void
-    {
+    it('handles multiline content without frontmatter', function () {
         $markdown = <<<'MD'
 # Multi-line Content
 
@@ -198,12 +182,11 @@ MD;
 
         $frontmatter = Frontmatter::parse($markdown);
 
-        $this->assertFalse($frontmatter->hasFrontmatter());
-        $this->assertStringContainsString('Multi-line Content', $frontmatter->getContent());
-    }
+        expect($frontmatter->hasFrontmatter())->toBeFalse()
+            ->and($frontmatter->getContent())->toContain('Multi-line Content');
+    });
 
-    public function test_frontmatter_at_start_only(): void
-    {
+    it('parses frontmatter at start only', function () {
         $markdown = <<<'MD'
 ---
 title: Title
@@ -222,9 +205,9 @@ MD;
 
         $frontmatter = Frontmatter::parse($markdown);
 
-        $this->assertEquals('Title', $frontmatter->getTitle());
-        $this->assertStringStartsWith('# First Heading', $frontmatter->getContent());
-        $this->assertStringContainsString('---', $frontmatter->getContent()); // HR in content
-        $this->assertStringContainsString('Another Section', $frontmatter->getContent());
-    }
-}
+        expect($frontmatter->getTitle())->toBe('Title')
+            ->and($frontmatter->getContent())->toStartWith('# First Heading')
+            ->and($frontmatter->getContent())->toContain('---')
+            ->and($frontmatter->getContent())->toContain('Another Section');
+    });
+});

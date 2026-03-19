@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
 /**
@@ -8,13 +10,13 @@ use Illuminate\Support\Str;
 if (! function_exists('svg')) {
     function svg(string $src): string
     {
-        $contents = file_get_contents(public_path('assets/svg/'.$src.'.svg'));
+        $path = public_path('assets/svg/'.$src.'.svg');
 
-        if ($contents === false) {
+        if (! file_exists($path)) {
             return '';
         }
 
-        return $contents;
+        return file_get_contents($path) ?: '';
     }
 }
 
@@ -24,8 +26,8 @@ if (! function_exists('svg')) {
 if (! function_exists('github')) {
     function github(string $repo): array
     {
-        return app('cache.store')->remember($repo.':stats', now()->addDay(), function () use ($repo) {
-            return app('github')->repositories()->show('yajra', $repo);
+        return Cache::remember($repo.':stats', now()->addDay(), function () use ($repo) {
+            return Http::github()->get("repos/yajra/{$repo}")->json();
         });
     }
 }
@@ -44,4 +46,3 @@ if (! function_exists('package_to_title')) {
         return $title;
     }
 }
-

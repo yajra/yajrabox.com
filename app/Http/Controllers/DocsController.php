@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Documentation;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Str;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -13,7 +20,7 @@ class DocsController extends Controller
     /**
      * Show the root documentation page (/docs).
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse|Redirector
      */
     public function showRootPage(?string $package = null)
     {
@@ -35,7 +42,7 @@ class DocsController extends Controller
     /**
      * Show a documentation page.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     * @return Application|Factory|View|RedirectResponse|Response|Redirector
      */
     public function show(string $package, ?string $version = null, ?string $page = null)
     {
@@ -124,7 +131,7 @@ class DocsController extends Controller
     /**
      * Show the documentation index JSON representation.
      *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     * @return JsonResponse|RedirectResponse
      */
     public function index(string $package, string $version, Documentation $docs)
     {

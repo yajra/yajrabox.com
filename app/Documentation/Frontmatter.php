@@ -98,7 +98,7 @@ class Frontmatter
 
             // Determine indentation
             preg_match('/^(\s*)/', $line, $indentMatch);
-            $indent = strlen($indentMatch[1]);
+            $indent = strlen($indentMatch[1] ?? '');
             $trimmedLine = trim($line);
 
             // Handle list items
