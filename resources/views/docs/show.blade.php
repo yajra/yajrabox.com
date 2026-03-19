@@ -1,7 +1,7 @@
 @extends('docs.app')
 
 @section('title', $title . ' - ' . package_to_title($package) . ' - YajraBox')
-@section('description', "$title $package package documentation.")
+@section('description', $description ?? ($title . ' - ' . package_to_title($package) . ' - YajraBox'))
 
 @section('content')
     <x-accessibility.skip-to-content-link/>

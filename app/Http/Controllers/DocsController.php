@@ -50,12 +50,18 @@ class DocsController extends Controller
         }
 
         $sectionPage = $page ?: 'installation';
-        $content = $this->docs->get($package, $version, $sectionPage);
+
+        // Get content with frontmatter metadata
+        $pageData = $this->docs->getWithMeta($package, $version, $sectionPage);
+        $content = $pageData['content'];
+        $frontmatter = $pageData['frontmatter'];
+
         if (empty($content)) {
             $otherVersions = $this->docs->versionsContainingPage($package, $sectionPage);
 
             return response()->view('docs.show', [
                 'title' => 'Page not found',
+                'description' => null,
                 'index' => $this->docs->getIndex($package, $version),
                 'package' => $package,
                 'content' => view('docs.missing', [
@@ -71,7 +77,14 @@ class DocsController extends Controller
             ], 404);
         }
 
-        $title = (new Crawler($content))->filterXPath('//h1');
+        // Try frontmatter title first, then fall back to H1 from HTML
+        $title = $frontmatter->getTitle();
+
+        if (! $title) {
+            $crawler = new Crawler($content);
+            $h1Element = $crawler->filterXPath('//h1');
+            $title = count($h1Element) ? $h1Element->text() : null;
+        }
 
         $section = '';
         if ($this->docs->pageExists($package, $version, $sectionPage)) {
@@ -82,8 +95,12 @@ class DocsController extends Controller
 
         $canonical = null;
 
+        // Use frontmatter description if available
+        $description = $frontmatter->getDescription();
+
         return view('docs.show', [
-            'title' => count($title) ? $title->text() : null,
+            'title' => $title,
+            'description' => $description,
             'index' => $this->docs->getIndex($package, $version),
             'package' => $package,
             'content' => $content,

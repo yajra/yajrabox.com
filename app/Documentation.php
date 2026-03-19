@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Documentation\Frontmatter;
 use App\Markdown\GithubFlavoredMarkdownConverter;
 use Carbon\CarbonInterval;
 use Illuminate\Contracts\Cache\Repository as Cache;
@@ -77,6 +78,21 @@ class Documentation
         return str_replace('{{version}}', $version, $content);
     }
 
+    /**
+     * Parse frontmatter from markdown content and return both parts.
+     *
+     * @return array{content: string, frontmatter: Frontmatter}
+     */
+    public function parseFrontmatter(string $content): array
+    {
+        $frontmatter = Frontmatter::parse($content);
+
+        return [
+            'content' => $frontmatter->getContent(),
+            'frontmatter' => $frontmatter,
+        ];
+    }
+
     public function convertToMarkdown(string $content): RenderedContentInterface
     {
         return (new GithubFlavoredMarkdownConverter)->convert($content);
@@ -105,13 +121,18 @@ class Documentation
                         ->mapWithKeys(function ($path) {
                             $contents = $this->files->get($path);
 
-                            preg_match('/\# (?<title>[^\\n]+)/', $contents, $page);
-                            preg_match_all('/<a name="(?<fragments>[^"]+)"><\\/a>\n#+ (?<titles>[^\\n]+)/', $contents,
+                            // Try to extract title from frontmatter first, then fallback to H1
+                            $frontmatter = Frontmatter::parse($contents);
+                            $frontmatterTitle = $frontmatter->getTitle();
+
+                            preg_match('/\# (?<title>[^\n]+)/', $contents, $page);
+                            preg_match_all('/<a name="(?<fragments>[^"]+)"><\/a>\n#+ (?<titles>[^\n]+)/', $contents,
                                 $section);
 
                             return [
                                 (string) Str::of($path)->afterLast('/')->before('.md') => [
-                                    'title' => $page['title'] ?? Config::string('app.name'),
+                                    'title' => $frontmatterTitle ?? $page['title'] ?? Config::string('app.name'),
+                                    'description' => $frontmatter->getDescription(),
                                     'sections' => collect($section['fragments'])
                                         ->combine($section['titles'])
                                         ->map(fn ($title) => ['title' => $title]),
@@ -143,6 +164,44 @@ class Documentation
                 $content = $this->replaceLinks($package, $version, $content);
 
                 return $this->convertToMarkdown($content);
+            }
+        );
+    }
+
+    /**
+     * Get the given documentation page with frontmatter metadata.
+     *
+     * @return array{content: string, frontmatter: Frontmatter}
+     */
+    public function getWithMeta(string $package, string $version, string $page): array
+    {
+        return $this->cache->remember($package.'.docs.'.$version.'.'.$page.'.meta', 5,
+            function () use ($package, $version, $page) {
+                $path = $this->getBasePath($package, $version).'/'.$page.'.md';
+
+                if (! $this->files->exists($path)) {
+                    return [
+                        'content' => '',
+                        'frontmatter' => new Frontmatter,
+                    ];
+                }
+
+                $content = file_get_contents($path);
+                if (! $content) {
+                    return [
+                        'content' => '',
+                        'frontmatter' => new Frontmatter,
+                    ];
+                }
+
+                $content = $this->replaceLinks($package, $version, $content);
+
+                $parsed = $this->parseFrontmatter($content);
+
+                return [
+                    'content' => $this->convertToMarkdown($parsed['content']),
+                    'frontmatter' => $parsed['frontmatter'],
+                ];
             }
         );
     }
