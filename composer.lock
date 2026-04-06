@@ -1277,16 +1277,16 @@
         },
         {
             "name": "laravel/nightwatch",
-            "version": "v1.24.4",
+            "version": "v1.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/nightwatch.git",
-                "reference": "127e9bb9928f0fcf69b52b244053b393c90347c8"
+                "reference": "1a50baf0e2f06005206aecb4db0770b557e7a595"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/nightwatch/zipball/127e9bb9928f0fcf69b52b244053b393c90347c8",
-                "reference": "127e9bb9928f0fcf69b52b244053b393c90347c8",
+                "url": "https://api.github.com/repos/laravel/nightwatch/zipball/1a50baf0e2f06005206aecb4db0770b557e7a595",
+                "reference": "1a50baf0e2f06005206aecb4db0770b557e7a595",
                 "shasum": ""
             },
             "require": {
@@ -1315,9 +1315,9 @@
                 "livewire/livewire": "^2.0|^3.0",
                 "mockery/mockery": "^1.0",
                 "mongodb/laravel-mongodb": "^4.0|^5.0",
-                "orchestra/testbench": "^8.0|^9.0|^10.0",
-                "orchestra/testbench-core": "^8.0|^9.0|^10.0",
-                "orchestra/workbench": "^8.0|^9.0|^10.0",
+                "orchestra/testbench": "^8.0|^9.0|^10.0|^11.0",
+                "orchestra/testbench-core": "^8.0|^9.0|^10.0|^11.0",
+                "orchestra/workbench": "^8.0|^9.0|^10.0|^11.0",
                 "phpstan/phpstan": "^1.0",
                 "phpunit/phpunit": "^10.0|^11.0|^12.0",
                 "singlestoredb/singlestoredb-laravel": "^1.0|^2.0",
@@ -1367,7 +1367,7 @@
                 "issues": "https://github.com/laravel/nightwatch/issues",
                 "source": "https://github.com/laravel/nightwatch"
             },
-            "time": "2026-03-18T23:25:05+00:00"
+            "time": "2026-04-01T05:26:52+00:00"
         },
         {
             "name": "laravel/prompts",
