@@ -6,6 +6,6 @@ if [ ! -f composer.json ]; then
 fi
 
 git pull
-composer install
+composer install --no-dev
 php artisan optimize
 source "$(dirname "$0")/checkout_latest_docs.sh"
