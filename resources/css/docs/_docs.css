@@ -28,7 +28,7 @@
         }
     }
 
-    @screen sm {
+    @media (min-width: 640px) {
         a[name] {
             position: relative;
             display: block;

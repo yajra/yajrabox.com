@@ -18,19 +18,19 @@
         line-height: 1.125em;
         margin-bottom: .65em;
 
-        @screen md {
+        @media (min-width: 768px) {
             font-size: 2.5em;
         }
 
-        @screen lg {
+        @media (min-width: 1024px) {
             font-size: 3em;
         }
 
-        @screen xl {
+        @media (min-width: 1280px) {
             font-size: 3.5em;
         }
 
-        @screen 2xl {
+        @media (min-width: 1536px) {
             font-size: 4em;
         }
     }
@@ -41,11 +41,11 @@
         letter-spacing: -.5px;
         line-height: 1.125em;
 
-        @screen md {
+        @media (min-width: 768px) {
             font-size: 2.25em;
         }
 
-        @screen lg {
+        @media (min-width: 1024px) {
             font-size: 3em;
         }
     }
@@ -56,11 +56,11 @@
         line-height: 1.25em;
         letter-spacing: -.33px;
 
-        @screen sm {
+        @media (min-width: 640px) {
             font-size: 1.75em;
         }
 
-        @screen md {
+        @media (min-width: 768px) {
             font-size: 2em;
         }
     }
@@ -70,7 +70,7 @@
         font-weight: 400;
         letter-spacing: -.25px;
 
-        @screen sm {
+        @media (min-width: 640px) {
             font-size: 1.5em;
         }
     }
@@ -81,7 +81,7 @@
         line-height: 1.666em;
         color: theme('colors.gray.700');
 
-        @screen sm {
+        @media (min-width: 640px) {
             font-size: 1.125em;
         }
     }
@@ -128,7 +128,7 @@
             line-height: 1.714em;
         }
 
-        @screen md {
+        @media (min-width: 768px) {
             font-size: 1.125em;
 
             &.small {
@@ -159,7 +159,7 @@
         quotes: "“" "”" "‘" "’";
     }
 
-    @screen sm {
+    @media (min-width: 640px) {
         blockquote {
             margin-left: 0;
             margin-right: 0;
