@@ -47,7 +47,9 @@ class Documentation
 
                 $content = $this->replaceLinks($package, $version, $content);
 
-                return $this->convertToMarkdown($content);
+                $parsed = $this->parseFrontmatter($content);
+
+                return $this->convertToMarkdown($parsed['content']);
             }
         );
     }
