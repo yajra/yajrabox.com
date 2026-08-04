@@ -7,5 +7,7 @@ fi
 
 git pull
 composer install --no-dev
+npm ci
+npm run build
 php artisan optimize
 source "$(dirname "$0")/checkout_latest_docs.sh"
