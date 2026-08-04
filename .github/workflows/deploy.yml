@@ -17,7 +17,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
 
           script: |
-            cd /var/www/yajrabox.com
+            cd /home/forge/yajrabox.com
             ./bin/deploy.sh
-            php artisan optimize
             echo 'Deployment successful'
